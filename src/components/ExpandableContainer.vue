@@ -47,27 +47,44 @@ function setPositions() {
 // handleClick
 // -------------------------------------------------------------
 function handleClick() {
-  fullScreen.value = !fullScreen.value;
+  console.log("pum");
+  if (!fullScreen.value) {
+    fullScreen.value = !fullScreen.value;
+    emit("emitFullScreen", fullScreen.value);
+
+    const parentRect = getParentRect();
+
+    if (fullScreen.value) {
+      setChildRect(parentRect);
+      setPositions();
+
+      setTimeout(() => {
+        setChildRect(fullScreenRect);
+        child.value.style.padding = "20px";
+      }, 100);
+    } else {
+      // setChildRect(parentRect);
+      // child.value.style.padding = "0px";
+      // setTimeout(() => {
+      //   setPositions();
+      // }, 500);
+    }
+  }
+}
+
+function closeCard() {
+  fullScreen.value = false;
+
   emit("emitFullScreen", fullScreen.value);
 
   const parentRect = getParentRect();
 
-  if (fullScreen.value) {
-    setChildRect(parentRect);
+  setChildRect(parentRect);
+  child.value.style.padding = "0px";
+
+  setTimeout(() => {
     setPositions();
-
-    setTimeout(() => {
-      setChildRect(fullScreenRect);
-      child.value.style.padding = "8px";
-    }, 100);
-  } else {
-    setChildRect(parentRect);
-    child.value.style.padding = "0px";
-
-    setTimeout(() => {
-      setPositions();
-    }, 500);
-  }
+  }, 500);
 }
 </script>
 
@@ -75,10 +92,18 @@ function handleClick() {
   <div ref="parent" class="h-full">
     <div
       ref="child"
-      class="cursor-pointer transition-all duration-[500ms] ease-out bg-black"
-      :class="fullScreen ? 'bg-opacity-50' : 'bg-opacity-0'"
+      class="transition-all duration-[500ms] ease-out bg-black"
+      :class="fullScreen ? 'bg-opacity-50 ' : 'bg-opacity-0 cursor-pointer '"
       @click="handleClick"
     >
+      <div
+        v-if="fullScreen"
+        class="absolute top-2 right-2 w-10 text-center h-10 px-2 py-2 rounded-full bg-sky-600 text-white shadow-lg hover:bg-sky-700 hover:text-white transition-all cursor-pointer"
+        :class="fullScreen ? 'opacity-100' : 'opacity-0'"
+        @click.stop="closeCard"
+      >
+        X
+      </div>
       <slot />
     </div>
   </div>
