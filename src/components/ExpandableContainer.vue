@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 
+const emit = defineEmits(["emitFullScreen"]);
 const fullScreen = ref(false);
 const parent = ref();
 const child = ref();
@@ -38,7 +39,7 @@ function setChildRect(rect) {
 // -------------------------------------------------------------
 function setPositions() {
   parent.value.style.position = fullScreen.value ? "static" : "relative";
-  child.value.style.position = fullScreen.value ? "absolute" : "static";
+  child.value.style.position = fullScreen.value ? "fixed" : "static";
   child.value.style.zIndex = fullScreen.value ? 50 : 1;
 }
 
@@ -47,6 +48,7 @@ function setPositions() {
 // -------------------------------------------------------------
 function handleClick() {
   fullScreen.value = !fullScreen.value;
+  emit("emitFullScreen", fullScreen.value);
 
   const parentRect = getParentRect();
 
@@ -56,9 +58,11 @@ function handleClick() {
 
     setTimeout(() => {
       setChildRect(fullScreenRect);
+      child.value.style.padding = "8px";
     }, 100);
   } else {
     setChildRect(parentRect);
+    child.value.style.padding = "0px";
 
     setTimeout(() => {
       setPositions();
@@ -71,7 +75,8 @@ function handleClick() {
   <div ref="parent" class="h-full">
     <div
       ref="child"
-      class="cursor-pointer transition-all duration-[500ms] ease-out"
+      class="cursor-pointer transition-all duration-[500ms] ease-out bg-black"
+      :class="fullScreen ? 'bg-opacity-50' : 'bg-opacity-0'"
       @click="handleClick"
     >
       <slot />

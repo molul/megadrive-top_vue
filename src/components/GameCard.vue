@@ -1,11 +1,27 @@
 <script setup>
+import { ref } from "vue";
 import ExpandableContainer from "./ExpandableContainer.vue";
-const { number } = defineProps(["number"]);
+import GameCardMobile from "./GameCardMobile.vue";
+import GameCardDesktop from "./GameCardDesktop.vue";
+
+const { number } = defineProps(["fullScreen", "number"]);
+
+const fullScreen = ref();
+function handleFullScreenChange(fullScreenValue) {
+  fullScreen.value = fullScreenValue;
+}
+
+const text = [
+  "Dynamite Headdy is a platformer... with a difference. You control a          little character whose main attack comes from his disembodied head.",
+  "Yes, years before Rayman appeared, we already had a hero who used detachable appendages to attack his enemies. Rather than the traditional power-ups, Dynamite Headdy enables you to swap your head for different kinds – such as heads that heal you or heads that stick on to walls. You use your head in order to climb up on platforms as well, as you can grab hold of things with it, and on certain stages of the Mega Drive/Genesis version it is used to turn the game into a side-scrolling shooter, as you gain a propeller, jet, or bird head. Basically, Dynamite Headdy is just a traditional platformer at heart.",
+];
 </script>
 
 <template>
-  <ExpandableContainer>
-    <div class="bg-red-400 p-2 rounded shadow-md h-full">{{ number }}</div>
+  <ExpandableContainer
+    @emit-full-screen="(fullScreen) => handleFullScreenChange(fullScreen)"
+  >
+    <GameCardDesktop :full-screen="fullScreen" :text="text" />
   </ExpandableContainer>
 </template>
 
