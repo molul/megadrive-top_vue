@@ -1,6 +1,6 @@
 <script setup>
 import { Icon } from "@iconify/vue";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
 const emit = defineEmits(["emitFullScreen"]);
 const fullScreen = ref(false);
@@ -14,6 +14,25 @@ const fullScreenRect = {
   height: "100%",
 };
 
+const parentRect = ref({
+  left: 0,
+  top: 0,
+  width: "100%",
+  height: "100%",
+});
+
+onMounted(() => {
+  parentRect.value = {
+    left: parent.value.getBoundingClientRect().left + "px",
+    top: parent.value.getBoundingClientRect().top + "px",
+    width: parent.value.getBoundingClientRect().width + "px",
+    height: parent.value.getBoundingClientRect().height + "px",
+    // height: "100%",
+  };
+  console.log(parentRect.value);
+  setChildRect(parentRect.value);
+  console.log(child.value.getBoundingClientRect());
+});
 // -------------------------------------------------------------
 // getParentRect
 // -------------------------------------------------------------
@@ -48,15 +67,15 @@ function setPositions() {
 // handleClick
 // -------------------------------------------------------------
 function handleClick() {
-  console.log("pum");
   if (!fullScreen.value) {
     fullScreen.value = !fullScreen.value;
     emit("emitFullScreen", fullScreen.value);
 
-    const parentRect = getParentRect();
+    // const parentRect = getParentRect();
+    console.log("ON", parentRect.value);
 
     if (fullScreen.value) {
-      setChildRect(parentRect);
+      setChildRect(parentRect.value);
       setPositions();
 
       setTimeout(() => {
@@ -78,9 +97,10 @@ function closeCard() {
 
   emit("emitFullScreen", fullScreen.value);
 
-  const parentRect = getParentRect();
+  // const parentRect = getParentRect();
+  console.log("OFF", parentRect.value);
 
-  setChildRect(parentRect);
+  setChildRect(parentRect.value);
   child.value.style.padding = "0px";
 
   setTimeout(() => {
@@ -99,7 +119,7 @@ function closeCard() {
     >
       <div
         v-if="fullScreen"
-        class="absolute top-2 right-2.5 text-center rounded-full bg-white shadow-lg hover:text-white transition-all cursor-pointer"
+        class="z-50 absolute top-2 right-2.5 text-center bg-white rounded-full shadow-lg hover:text-white transition-all cursor-pointer"
         :class="fullScreen ? 'opacity-100' : 'opacity-0'"
         @click.stop="closeCard"
       >
@@ -109,6 +129,7 @@ function closeCard() {
           class="size-10 text-sky-600 hover:text-sky-500"
         />
       </div>
+
       <slot />
     </div>
   </div>

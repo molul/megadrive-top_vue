@@ -20,10 +20,10 @@ const text = [
     @emit-full-screen="(fullScreen) => handleFullScreenChange(fullScreen)"
   >
     <div
-      class="text-xs md:text-sm lg:text-base text-white bg-gradient-to-b from-[#d82c94] to-[#3a47b2] rounded shadow-md h-full flex items-start grow gap-4"
+      class="text-xs md:text-sm lg:text-base text-white bg-gradient-to-b from-[#d82c94] to-[#3a47b2] rounded shadow-md h-full flex items-start grow"
       :class="
         fullScreen
-          ? 'flex-col md:flex-row overflow-y-scroll border-4 border-zinc-400  p-2'
+          ? 'flex-col md:flex-row overflow-y-auto border-4 border-zinc-400 gap-4'
           : 'flex-col overflow-y-hidden'
       "
     >
@@ -48,8 +48,11 @@ const text = [
             "
           />
         </div>
-        <div class="font-bold text-xl px-2" :class="!fullScreen ? 'py-2' : ''">
-          Dynamite Headdy
+        <div
+          class="font-bold text-xl px-2"
+          :class="!fullScreen ? '  py-2' : ''"
+        >
+          Dynamite Headdy {{ number }}
         </div>
         <div v-if="fullScreen" class="flex flex-col px-2">
           <div><span class="font-bold">Genre:</span> platform, action</div>
@@ -58,8 +61,11 @@ const text = [
         </div>
       </div>
       <!-- Synopsys and screenshots -->
-      <div class="flex-1 overflow-y-auto w-full">
-        <div class="w-full" :class="fullScreen ? 'px-0' : 'px-2'">
+      <div
+        class="flex-1 w-full"
+        :class="fullScreen ? 'overflow-y-auto h-full' : ''"
+      >
+        <div class="w-full" :class="fullScreen ? 'px-0 py-2' : 'px-2'">
           <div v-if="!fullScreen" class="text-sm">
             {{ text.join(". ").slice(0, 100) + "..." }}
           </div>
