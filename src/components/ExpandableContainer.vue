@@ -1,4 +1,5 @@
 <script setup>
+import { Icon } from "@iconify/vue";
 import { ref } from "vue";
 
 const emit = defineEmits(["emitFullScreen"]);
@@ -98,11 +99,15 @@ function closeCard() {
     >
       <div
         v-if="fullScreen"
-        class="absolute top-2 right-2 w-10 text-center h-10 px-2 py-2 rounded-full bg-sky-600 text-white shadow-lg hover:bg-sky-700 hover:text-white transition-all cursor-pointer"
+        class="absolute top-2 right-2.5 text-center rounded-full bg-white shadow-lg hover:text-white transition-all cursor-pointer"
         :class="fullScreen ? 'opacity-100' : 'opacity-0'"
         @click.stop="closeCard"
       >
-        X
+        <Icon
+          icon="solar:close-circle-bold"
+          size="80"
+          class="size-10 text-sky-600 hover:text-sky-500"
+        />
       </div>
       <slot />
     </div>

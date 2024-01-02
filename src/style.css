@@ -7,10 +7,26 @@
     @apply overflow-y-hidden h-full;
   }
   body {
-    @apply overflow-y-hidden h-full;
+    @apply overflow-y-hidden h-full bg-black bg-center;
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, white 1px, transparent 1px),
+      linear-gradient(to bottom, white 1px, transparent 1px);
   }
 
   #app {
     @apply h-full;
+  }
+
+  @font-face {
+    font-family: Pixeloid;
+    src: url("/PixeloidMono.ttf") format("truetype");
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: Pixeloid;
+    src: url("/PixeloidSans-Bold.otf") format("opentype");
+    font-weight: 700;
+    font-display: swap;
   }
 }
