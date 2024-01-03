@@ -47,14 +47,14 @@ defineExpose({ showContent });
         }"
       >
         <!-- Boxart, name and info -->
-        <div class="w-full md:w-1/3 sticky top-0 flex flex-col">
+        <div class="w-full sm:w-1/3 sticky top-0 flex flex-col">
           <div class="flex flex-col overflow-hidden sticky top-0">
             <img
               src="/dynamite_headdy.png"
-              class="w-2/3 md:w-full object-contain object-center mx-auto"
+              class="w-3/5 sm:w-full object-contain object-center mx-auto"
             />
           </div>
-          <div class="flex flex-col gap-2 p-2 md:p-4">
+          <div class="flex flex-col gap-1 md:gap-2 p-2 md:p-4">
             <Title :text="title" size="xl" />
             <div><span class="font-bold">Genre:</span> platform, action</div>
             <div><span class="font-bold">Release date:</span> 1994</div>
@@ -63,8 +63,8 @@ defineExpose({ showContent });
         </div>
         <!-- Synopsys and screenshots -->
         <div class="w-full overflow-y-scroll h-full p-2 md:p-4">
-          <div class="flex flex-col gap-8">
-            <div class="flex flex-col gap-4">
+          <div class="flex flex-col gap-4 md:gap-8">
+            <div class="flex flex-col gap-2 md:gap-4">
               <Title text="Synopsis" size="lg" />
               <div class="flex flex-col gap-2">
                 <p v-for="paragraph in text">{{ paragraph }}</p>
@@ -73,9 +73,9 @@ defineExpose({ showContent });
             <div>
               <div v-for="index in 25">Testing scroll ...{{ index }}</div>
             </div>
-            <div class="flex flex-col gap-4">
+            <div class="flex flex-col gap-2 md:gap-4">
               <Title text="Screenshots" size="lg" />
-              <div class="flex flex-wrap gap-4">
+              <div class="flex flex-wrap gap-2 md:gap-4">
                 <img
                   src="/dynamite_headdy_ss1.png"
                   class="mx-auto object-contain"
