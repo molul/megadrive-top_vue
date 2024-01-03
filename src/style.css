@@ -3,18 +3,11 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    @apply overflow-y-hidden h-full;
-  }
   body {
-    @apply overflow-y-hidden h-full bg-black bg-center;
+    @apply bg-black bg-center;
     background-size: 40px 40px;
     background-image: linear-gradient(to right, white 1px, transparent 1px),
       linear-gradient(to bottom, white 1px, transparent 1px);
-  }
-
-  #app {
-    @apply h-full;
   }
 
   @font-face {
