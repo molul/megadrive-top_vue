@@ -3,7 +3,7 @@ import { ref, onMounted } from "vue";
 import GameCardSmall from "./GameCardSmall.vue";
 import GameCardExpanded from "./GameCardExpanded.vue";
 
-const { number } = defineProps(["fullScreen", "number"]);
+defineProps(["title", "text", "fullScreen"]);
 
 const fullScreen = ref(false);
 const showContent = ref(false);
@@ -24,11 +24,6 @@ const fullScreenRect = {
   width: "100%",
   height: "100%",
 };
-
-const text = [
-  "Dynamite Headdy is a platformer... with a difference. You control a little character whose main attack comes from his disembodied head.",
-  "Yes, years before Rayman appeared, we already had a hero who used detachable appendages to attack his enemies. Rather than the traditional power-ups, Dynamite Headdy enables you to swap your head for different kinds – such as heads that heal you or heads that stick on to walls. You use your head in order to climb up on platforms as well, as you can grab hold of things with it, and on certain stages of the Mega Drive/Genesis version it is used to turn the game into a side-scrolling shooter, as you gain a propeller, jet, or bird head. Basically, Dynamite Headdy is just a traditional platformer at heart.",
-];
 
 // -------------------------------------------------------------
 // getParentRect
@@ -94,6 +89,10 @@ function closeCard() {
 
 <template>
   <div ref="parent" @click="handleClick">
+    <!-- Actual card -->
+    <GameCardSmall :title="title" :text="text" :full-screen="fullScreen" />
+
+    <!-- Expandable container -->
     <div
       ref="child"
       class="fixed transition-all duration-[500ms]"
@@ -103,12 +102,11 @@ function closeCard() {
         ref="gameCardExpanded"
         :full-screen="fullScreen"
         :show-content="showContent"
+        :title="title"
         :text="text"
-        :number="number"
         @close-card="closeCard"
       />
     </div>
-    <GameCardSmall :text="text" :number="number" :full-screen="fullScreen" />
   </div>
 </template>
 
