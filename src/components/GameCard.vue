@@ -5,22 +5,11 @@ import GameCardExpanded from "./GameCardExpanded.vue";
 
 const { number } = defineProps(["fullScreen", "number"]);
 
-const fullScreen = ref();
-
-const text = [
-  "Dynamite Headdy is a platformer... with a difference. You control a          little character whose main attack comes from his disembodied head.",
-  "Yes, years before Rayman appeared, we already had a hero who used detachable appendages to attack his enemies. Rather than the traditional power-ups, Dynamite Headdy enables you to swap your head for different kinds – such as heads that heal you or heads that stick on to walls. You use your head in order to climb up on platforms as well, as you can grab hold of things with it, and on certain stages of the Mega Drive/Genesis version it is used to turn the game into a side-scrolling shooter, as you gain a propeller, jet, or bird head. Basically, Dynamite Headdy is just a traditional platformer at heart.",
-];
-
+const fullScreen = ref(false);
+const showContent = ref(false);
 const parent = ref();
 const child = ref();
-
-const fullScreenRect = {
-  left: 0,
-  top: 0,
-  width: "100%",
-  height: "100%",
-};
+const gameCardExpanded = ref();
 
 const parentRect = ref({
   left: 0,
@@ -29,14 +18,18 @@ const parentRect = ref({
   height: "100%",
 });
 
-// onMounted(() => {
-//   parentRect.value = {
-//     left: parent.value.getBoundingClientRect().left + "px",
-//     top: parent.value.getBoundingClientRect().top + "px",
-//     width: parent.value.getBoundingClientRect().width + "px",
-//     height: parent.value.getBoundingClientRect().height + "px",
-//   };
-// });
+const fullScreenRect = {
+  left: 0,
+  top: 0,
+  width: "100%",
+  height: "100%",
+};
+
+const text = [
+  "Dynamite Headdy is a platformer... with a difference. You control a little character whose main attack comes from his disembodied head.",
+  "Yes, years before Rayman appeared, we already had a hero who used detachable appendages to attack his enemies. Rather than the traditional power-ups, Dynamite Headdy enables you to swap your head for different kinds – such as heads that heal you or heads that stick on to walls. You use your head in order to climb up on platforms as well, as you can grab hold of things with it, and on certain stages of the Mega Drive/Genesis version it is used to turn the game into a side-scrolling shooter, as you gain a propeller, jet, or bird head. Basically, Dynamite Headdy is just a traditional platformer at heart.",
+];
+
 // -------------------------------------------------------------
 // getParentRect
 // -------------------------------------------------------------
@@ -80,6 +73,9 @@ function handleClick() {
     setTimeout(() => {
       setChildRect(fullScreenRect);
     }, 100);
+    setTimeout(() => {
+      gameCardExpanded.value.showContent = true;
+    }, 500);
   }
 }
 
@@ -92,7 +88,7 @@ function closeCard() {
   setTimeout(() => {
     fullScreen.value = false;
     setZIndex();
-  }, 500);
+  }, 400);
 }
 </script>
 
@@ -104,7 +100,9 @@ function closeCard() {
       :class="fullScreen ? 'pointer-events-auto' : 'pointer-events-none'"
     >
       <GameCardExpanded
+        ref="gameCardExpanded"
         :full-screen="fullScreen"
+        :show-content="showContent"
         :text="text"
         :number="number"
         @close-card="closeCard"

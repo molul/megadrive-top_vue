@@ -6,6 +6,9 @@ export default {
       fontFamily: {
         pixeloid: "'Pixeloid'",
       },
+      transitionProperty: {
+        spacing: "margin, padding",
+      },
     },
   },
   plugins: [],

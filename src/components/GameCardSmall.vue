@@ -5,7 +5,6 @@ defineProps(["text", "number", "fullScreen"]);
 <template>
   <div
     class="cursor-pointer text-xs md:text-sm lg:text-base text-white bg-gradient-to-b from-[#d82c94] to-[#3a47b2] rounded shadow-md flex items-start flex-col h-full gap-0 transition-opacity duration-300 overflow-hidden"
-    :class="fullScreen ? 'opacity-0' : 'opacity-100'"
   >
     <!-- Boxart, name and info -->
     <div class="flex flex-col overflow-hidden h-48">
