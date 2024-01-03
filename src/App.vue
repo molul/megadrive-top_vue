@@ -18,7 +18,11 @@ const title = "Dynamite Headdy";
       class="p-4 grid grid-cols-none sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 bg-black bg-opacity-70"
     >
       <div v-for="number in 20" :key="number">
-        <GameCard :number="number" :title="title + ' ' + number" :text="text" />
+        <GameCard
+          :number="number"
+          :title="number + ' - ' + title"
+          :text="text"
+        />
       </div>
     </div>
     <Footer />
