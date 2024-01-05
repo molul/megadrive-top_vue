@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        pixeloid: "'Pixeloid'",
+        main: "'Main'",
       },
       transitionProperty: {
         spacing: "margin, padding",

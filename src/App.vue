@@ -2,6 +2,7 @@
 import GameCard from "./components/GameCard.vue";
 import Logo from "./components/Logo.vue";
 import Footer from "./components/Footer.vue";
+import { gamesData } from "../data/gamesData";
 
 const text = [
   "Dynamite Headdy is a platformer... with a difference. You control a little character whose main attack comes from his disembodied head.",
@@ -12,17 +13,13 @@ const title = "Dynamite Headdy";
 </script>
 
 <template>
-  <div class="font-pixeloid">
+  <div class="font-main">
     <Logo />
     <div
       class="p-4 grid grid-cols-none sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 bg-black bg-opacity-70"
     >
       <div v-for="number in 20" :key="number">
-        <GameCard
-          :number="number"
-          :title="number + ' - ' + title"
-          :text="text"
-        />
+        <GameCard :number="number" :title="title" :text="text" />
       </div>
     </div>
     <Footer />

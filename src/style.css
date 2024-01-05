@@ -11,15 +11,8 @@
   }
 
   @font-face {
-    font-family: Pixeloid;
-    src: url("/PixeloidMono.ttf") format("truetype");
-    font-weight: 400;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: Pixeloid;
-    src: url("/PixeloidSans-Bold.otf") format("opentype");
-    font-weight: 700;
+    font-family: Main;
+    src: url("/fonts/joystix monospace.otf") format("opentype");
     font-display: swap;
   }
 }

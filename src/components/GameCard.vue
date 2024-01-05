@@ -3,7 +3,7 @@ import { ref, onMounted } from "vue";
 import GameCardSmall from "./GameCardSmall.vue";
 import GameCardExpanded from "./GameCardExpanded.vue";
 
-defineProps(["title", "text", "fullScreen"]);
+defineProps(["number", "title", "text", "fullScreen"]);
 
 const fullScreen = ref(false);
 const showContent = ref(false);
@@ -93,7 +93,12 @@ function closeCard() {
 <template>
   <div ref="parent" @click="handleClick">
     <!-- Actual card -->
-    <GameCardSmall :title="title" :text="text" :full-screen="fullScreen" />
+    <GameCardSmall
+      :title="title"
+      :text="text"
+      :full-screen="fullScreen"
+      :number="number"
+    />
 
     <!-- Expandable container -->
     <div

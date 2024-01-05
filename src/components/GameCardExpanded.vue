@@ -50,7 +50,7 @@ defineExpose({ showContent });
         <div class="w-full sm:w-1/3 sticky top-0 flex flex-col">
           <div class="flex flex-col overflow-hidden sticky top-0">
             <img
-              src="/dynamite_headdy.png"
+              src="/img/boxarts/dynamite_headdy.png"
               class="w-3/5 sm:w-full object-contain object-center mx-auto"
             />
           </div>
@@ -77,11 +77,8 @@ defineExpose({ showContent });
               <Title text="Screenshots" size="lg" />
               <div class="flex flex-wrap gap-2 md:gap-4">
                 <img
-                  src="/dynamite_headdy_ss1.png"
-                  class="mx-auto object-contain"
-                />
-                <img
-                  src="/dynamite_headdy_ss2.png"
+                  v-for="index in 2"
+                  :src="`/img/screenshots/dynamite_headdy_${index}.png`"
                   class="mx-auto object-contain"
                 />
               </div>
