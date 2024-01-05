@@ -60,6 +60,8 @@ function handleClick() {
   if (!fullScreen.value) {
     fullScreen.value = !fullScreen.value;
 
+    document.body.classList.add("overflow-hidden");
+
     parentRect.value = getParentRect();
 
     setChildRect(parentRect.value);
@@ -78,6 +80,7 @@ function handleClick() {
 // closeCard
 // -------------------------------------------------------------
 function closeCard() {
+  document.body.classList.remove("overflow-hidden");
   setChildRect(parentRect.value);
 
   setTimeout(() => {
