@@ -35,22 +35,22 @@ const emit = defineEmits(["clickNext", "clickPrev"]);
 
     <!-- Title, info and nav buttons tablet and desktop -->
     <div class="flex flex-col gap-1 md:gap-4 p-2 md:p-4">
-      <Title :text="data.name || ''" size="lg" />
+      <Title :text="data.name || ''" size="lg" centered="true" />
 
       <!-- Info -->
-      <div class="text-xs md:text-sm">
-        <div>
-          <span class="font-bold">Genre:</span>
-          {{ data.genres?.join(", ") }}
-        </div>
-        <div>
-          <span class="font-bold">Release date:</span>
-          {{ data.year || "" }}
-        </div>
-        <div>
-          <span class="font-bold">Developer:</span>
-          {{ data.developer || "" }}
-        </div>
+      <table class="text-xs md:text-sm">
+        <tr>
+          <th class="font-bold">Genre</th>
+          <td>{{ data.genres?.join(", ") }}</td>
+        </tr>
+        <tr>
+          <th class="font-bold">Release date</th>
+          <td>{{ data.year || "" }}</td>
+        </tr>
+        <tr>
+          <th class="font-bold">Developer</th>
+          <td>{{ data.developer || "" }}</td>
+        </tr>
       </div>
     </div>
 
