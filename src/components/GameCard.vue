@@ -3,7 +3,7 @@ import { ref, onMounted } from "vue";
 import GameCardSmall from "./GameCardSmall.vue";
 import GameCardExpanded from "./GameCardExpanded.vue";
 
-defineProps(["number", "title", "text", "fullScreen"]);
+defineProps(["number", "title", "text", "fullScreen", "data"]);
 
 const fullScreen = ref(false);
 const showContent = ref(false);
@@ -63,10 +63,11 @@ function handleClick() {
     document.body.classList.add("overflow-hidden");
 
     parentRect.value = getParentRect();
+    // console.log(parentRect.value);
 
     setChildRect(parentRect.value);
     setZIndex();
-
+    //transition-all
     setTimeout(() => {
       setChildRect(fullScreenRect);
     }, 100);
@@ -91,13 +92,14 @@ function closeCard() {
 </script>
 
 <template>
-  <div ref="parent" @click="handleClick">
+  <div ref="parent" @click="handleClick" class="h-full">
     <!-- Actual card -->
     <GameCardSmall
       :title="title"
       :text="text"
       :full-screen="fullScreen"
       :number="number"
+      :data="data"
     />
 
     <!-- Expandable container -->
@@ -112,6 +114,7 @@ function closeCard() {
         :show-content="showContent"
         :title="title"
         :text="text"
+        :data="data"
         @close-card="closeCard"
       />
     </div>
