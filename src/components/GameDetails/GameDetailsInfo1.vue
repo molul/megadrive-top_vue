@@ -40,15 +40,15 @@ const emit = defineEmits(["clickNext", "clickPrev"]);
       <!-- Info -->
       <table class="text-xs md:text-sm">
         <tr>
-          <th class="font-bold">Genre</th>
+          <td class="font-bold">Genre</td>
           <td>{{ data.genres?.join(", ") }}</td>
         </tr>
         <tr>
-          <th class="font-bold">Release date</th>
+          <td class="font-bold">Release date</td>
           <td>{{ data.year || "" }}</td>
         </tr>
         <tr>
-          <th class="font-bold">Developer</th>
+          <td class="font-bold">Developer</td>
           <td>{{ data.developer || "" }}</td>
         </tr>
       </table>
