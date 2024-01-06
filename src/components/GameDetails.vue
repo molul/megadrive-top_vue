@@ -157,13 +157,7 @@ defineExpose({ data, number, expand, showInnerContent });
               showInnerContent ? 'opacity-100' : 'opacity-0'
             }`"
           >
-            <!-- Image background -->
-            <div
-              v-if="data"
-              class="absolute bottom-0 md:top-0 right-0 overflow-hidden opacity-5 pointer-events-none"
-            >
-              <img :src="`/img/boxarts/${data.id}.webp`" />
-            </div>
+            
 
             <!-- Boxart, name and info -->
             <GameDetailsInfo1
@@ -174,6 +168,14 @@ defineExpose({ data, number, expand, showInnerContent });
 
             <!-- Synopsys and screenshots -->
             <GameDetailsInfo2 :data="data" />
+
+<!-- Image background -->
+            <div
+              v-if="data"
+              class="absolute bottom-0 md:top-0 right-0 overflow-hidden opacity-5 pointer-events-none"
+            >
+              <img :src="`/img/boxarts/${data.id}.webp`" />
+            </div>
           </div>
         </div>
       </div>
