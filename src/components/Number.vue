@@ -4,7 +4,7 @@ defineProps(["number"]);
 
 <template>
   <div
-    class="text-lg absolute top-2 left-2 bg-black/80 border-4 border-gray-200 shadow-md size-14 rounded-full flex items-center justify-center z-10"
+    class="text-base md:text-lg absolute top-2 left-2 bg-black/80 border-4 border-gray-200 shadow-md size-10 md:size-14 rounded-full flex items-center justify-center z-10"
   >
     {{ number + 1 }}
   </div>

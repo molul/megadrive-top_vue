@@ -1,7 +1,8 @@
 <script setup>
 import { Icon } from "@iconify/vue";
-import { defineEmits } from "vue";
-defineEmits(["clickPrev", "clickNext"]);
+import { defineProps, defineEmits } from "vue";
+
+const emit = defineEmits(["clickPrev", "clickNext"]);
 defineProps(["mode"]);
 </script>
 
