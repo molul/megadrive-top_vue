@@ -9,7 +9,7 @@ const emit = defineEmits(["clickNext", "clickPrev"]);
 <template>
   <div
     v-if="data"
-    class="w-full sm:w-1/3 sticky top-0 flex flex-col gridBg bg-black py-2 md:py-0"
+    class="w-full lg:w-1/3 sticky top-0 flex flex-col gridBg bg-black py-2 md:py-0"
   >
     <div class="flex flex-col overflow-hidden sticky top-0">
       <!-- Boxart with nav buttons mobile -->
