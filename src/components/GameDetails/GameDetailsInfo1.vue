@@ -20,7 +20,7 @@ const emit = defineEmits(["clickNext", "clickPrev"]);
         <div class="w-full md:max-h-none">
           <img
             :src="`/img/boxarts/${data.id}.webp`"
-            class="sm:w-full object-contain h-full max-h-[300px] sm:h-auto mx-auto"
+            class="sm:w-full object-contain h-full max-h-[250px] sm:h-auto sm:max-h-none mx-auto"
           />
         </div>
 
