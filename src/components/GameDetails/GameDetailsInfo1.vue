@@ -38,20 +38,20 @@ const emit = defineEmits(["clickNext", "clickPrev"]);
       <Title :text="data.name || ''" size="lg" centered="true" />
 
       <!-- Info -->
-      <table class="text-xs md:text-sm">
-        <tr>
-          <td class="font-bold">Genre</td>
-          <td>{{ data.genres?.join(", ") }}</td>
-        </tr>
-        <tr>
-          <td class="font-bold">Release date</td>
-          <td>{{ data.year || "" }}</td>
-        </tr>
-        <tr>
-          <td class="font-bold">Developer</td>
-          <td>{{ data.developer || "" }}</td>
-        </tr>
-      </table>
+      <div class=" grid grid-cols-2 text-xs md:text-sm">
+        
+          <div class="font-bold">Genre</div>
+          <div>{{ data.genres?.join(", ") }}</div>
+        
+        
+          <div class="font-bold">Release date</div>
+          <div>{{ data.year || "" }}</div>
+        <
+        
+          <div class="font-bold">Developer</div>
+          <div>{{ data.developer || "" }}</div>
+        
+      </div>
     </div>
 
     <!-- Navigation buttons from tablet -->
