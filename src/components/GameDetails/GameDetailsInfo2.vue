@@ -3,6 +3,11 @@ import Title from "@/components/Common/Title.vue";
 import GameDetailsBgImage from "@/components/GameDetails/GameDetailsBgImage.vue";
 
 defineProps(["data"]);
+
+const getImageUrl = (gameId, imgIndex) => {
+  return new URL(`/img/screenshots/${gameId}_${imgIndex}.webp`, import.meta.url)
+    .href;
+};
 </script>
 
 <template>
@@ -31,7 +36,8 @@ defineProps(["data"]);
               :href="`/img/screenshots/${data.id}_${index}.webp`"
               target="_blank"
             >
-              <img :src="`/img/screenshots/${data.id}_${index}.webp`" />
+              <!-- <img :src="`/img/screenshots/${data.id}_${index}.webp`" /> -->
+              <img :src="getImageUrl(data.id, index)" />
             </a>
           </div>
         </div>
