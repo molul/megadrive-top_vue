@@ -5,7 +5,6 @@ import GameDetailsInfo1 from "@/components/GameDetails/GameDetailsInfo1.vue";
 import GameDetailsInfo2 from "@/components/GameDetails/GameDetailsInfo2.vue";
 import Number from "@/components/Common/Number.vue";
 import NavigationButtons from "@/components/Buttons/NavigationButtons.vue";
-import GameDetailsBgImage from "@/components/GameDetails/GameDetailsBgImage.vue";
 import { onClickOutside } from "@vueuse/core";
 
 const container = ref();
@@ -132,7 +131,7 @@ defineExpose({ data, number, expand, showInnerContent });
       <div class="flex size-full items-center justify-center">
         <div
           ref="content"
-          class="relative text-xs md:text-sm lg:text-base text-white bg-gradient-to-br from-mdpurple to-mdblue rounded shadow-md h-full items-start border-4 border-zinc-400 gap-4 w-full max-w-7xl transition-opacity duration-500"
+          class="relative text-xs md:text-sm lg:text-base text-white bg-gradient-to-br from-mdpurple to-mdblue rounded shadow-md items-start border-4 border-zinc-400 gap-4 size-full max-w-7xl transition-opacity duration-500"
           :class="{
             'opacity-0': !showContent,
           }"
@@ -152,7 +151,7 @@ defineExpose({ data, number, expand, showInnerContent });
 
           <!-- Inner content -->
           <div
-            :class="`flex grow flex-col lg:flex-row transition-opacity duration-300 h-full overflow-hidden ${
+            :class="`flex size-full flex-col lg:flex-row transition-opacity duration-300 overflow-hidden ${
               showInnerContent ? 'opacity-100' : 'opacity-0'
             }`"
           >
@@ -175,18 +174,6 @@ defineExpose({ data, number, expand, showInnerContent });
 
             <!-- Synopsys and screenshots -->
             <GameDetailsInfo2 :data="data" />
-
-            <!-- Image background -->
-            <!-- <GameDetailsBgImage
-              v-if="data"
-              :src="`/img/boxarts/${data.id}.webp`"
-            /> -->
-            <!-- <div
-              v-if="data"
-              class="absolute bottom-0 md:top-0 right-0 overflow-hidden opacity-5 pointer-events-none"
-            >
-              <img :src="`/img/boxarts/${data.id}.webp`" />
-            </div> -->
           </div>
         </div>
       </div>

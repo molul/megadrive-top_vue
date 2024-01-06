@@ -30,4 +30,24 @@
     src: url("/fonts/joystix monospace.otf") format("opentype");
     font-display: swap;
   }
+
+  /* width */
+  ::-webkit-scrollbar {
+    @apply w-1.5;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-gray-300/30 transition-colors duration-300;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-50/30;
+  }
 }
