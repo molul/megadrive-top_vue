@@ -15,7 +15,7 @@ defineProps(["number", "data"]);
     <!-- Boxart, name and info -->
     <div class="w-full">
       <img
-        class="object-none object-[60%_40%] w-full h-72"
+        class="object-none object-[65%_40%] w-full h-72"
         :src="`/img/boxarts/${data.id}.webp`"
       />
     </div>

@@ -2,6 +2,7 @@
 import { ref, defineExpose, defineEmits } from "vue";
 import CloseButton from "./CloseButton.vue";
 import Title from "./Title.vue";
+import { Icon } from "@iconify/vue";
 import { onClickOutside } from "@vueuse/core";
 
 const container = ref();
@@ -12,7 +13,7 @@ const data = ref(null);
 const showContent = ref(false);
 const showInnerContent = ref(false);
 const fullScreen = ref(false);
-const originRect = ref();
+const clickedCard = ref();
 
 onClickOutside(content, (event) => {
   if (fullScreen.value) {
@@ -27,7 +28,19 @@ const fullScreenRect = {
   height: "100%",
 };
 
-const emit = defineEmits("close");
+const emit = defineEmits(["close", "clickNext", "clickPrev"]);
+
+// -------------------------------------------------------------
+// getRect
+// -------------------------------------------------------------
+function getRect(elem) {
+  return {
+    left: elem.getBoundingClientRect().left + "px",
+    top: elem.getBoundingClientRect().top + "px",
+    width: elem.getBoundingClientRect().width + "px",
+    height: elem.getBoundingClientRect().height + "px",
+  };
+}
 
 // -------------------------------------------------------------
 // setContainerRect
@@ -48,10 +61,11 @@ function setZIndex() {
 // -------------------------------------------------------------
 // expand
 // -------------------------------------------------------------
-function expand(parentRect) {
+function expand(card) {
+  clickedCard.value = card;
+  const parentRect = getRect(card);
   fullScreen.value = true;
   showContent.value = true;
-  originRect.value = parentRect;
 
   setContainerRect(parentRect);
   setZIndex();
@@ -77,11 +91,13 @@ function expand(parentRect) {
 // close
 // -------------------------------------------------------------
 function close() {
+  const parentRect = getRect(clickedCard.value);
+
   emit("close");
   showInnerContent.value = false;
 
   document.body.classList.remove("overflow-hidden");
-  setContainerRect(originRect.value);
+  setContainerRect(parentRect);
   bgWrapper.value.classList.remove("p-6");
 
   setTimeout(() => {
@@ -94,7 +110,7 @@ function close() {
   }, 250);
 }
 
-defineExpose({ data, showContent: showInnerContent, fullScreen, expand });
+defineExpose({ data, expand });
 </script>
 
 <template>
@@ -127,6 +143,20 @@ defineExpose({ data, showContent: showInnerContent, fullScreen, expand });
               'opacity-0': !showInnerContent,
             }"
           />
+          <!-- Navigation buttons -->
+          <div
+            class="absolute -left-6 top-1/2 z-50 bg-black bg-opacity-60 rounded shadow-md"
+            @click="emit('clickPrev')"
+          >
+            <Icon icon="solar:alt-arrow-left-outline" class="size-10" />
+          </div>
+          <div
+            class="absolute -right-6 top-1/2 z-50 bg-black bg-opacity-60 shadow-md rounded"
+            @click="emit('clickNext')"
+          >
+            <Icon icon="solar:alt-arrow-right-outline" class="size-10" />
+          </div>
+          <!-- Inner content -->
           <div
             :class="`flex grow flex-col md:flex-row transition-opacity duration-300 h-full overflow-hidden ${
               showInnerContent ? 'opacity-100' : 'opacity-0'

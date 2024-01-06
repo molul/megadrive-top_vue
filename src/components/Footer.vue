@@ -6,7 +6,7 @@
     <a
       href="https://www.luismorcilloluque.com/en"
       target="_blank"
-      class="hover:underline"
+      class="underline hover:no-underline"
       >Luis Morcillo</a
     >
     with Vue &copy; 2023
