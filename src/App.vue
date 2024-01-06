@@ -16,10 +16,15 @@ const title = "Dynamite Headdy";
   <div class="font-main">
     <Logo />
     <div
-      class="p-4 grid grid-cols-none sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 bg-black bg-opacity-70"
+      class="p-4 grid grid-cols-none sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 bg-black bg-opacity-70"
     >
-      <div v-for="number in 20" :key="number">
-        <GameCard :number="number" :title="title" :text="text" />
+      <div v-for="(gameData, index) in gamesData" :key="number">
+        <GameCard
+          :number="index"
+          :title="title"
+          :text="text"
+          :data="gameData"
+        />
       </div>
     </div>
     <Footer />
