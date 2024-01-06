@@ -14,7 +14,7 @@ const emit = defineEmits(["clickNext", "clickPrev"]);
     <div class="flex flex-col overflow-hidden sticky top-0">
       <!-- Boxart with nav buttons mobile -->
       <div
-        class="relative flex items-center justify-between gap-4 h-full py-2 md:py-0"
+        class="relative flex items-center justify-between gap-4 h-full py-2 lg:py-0"
       >
         <!-- Image -->
         <div class="w-full">
