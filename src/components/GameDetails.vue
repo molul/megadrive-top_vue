@@ -166,11 +166,11 @@ defineExpose({ data, number, expand, showInnerContent });
             </div>
 
             <!-- Boxart, name and info -->
-            <!-- <GameDetailsInfo1
+            <GameDetailsInfo1
               :data="data"
               @click-next="emit('clickNext')"
               @click-prev="emit('clickPrev')"
-            /> -->
+            />
 
             <!-- Synopsys and screenshots -->
             <GameDetailsInfo2 :data="data" />
