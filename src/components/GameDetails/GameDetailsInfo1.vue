@@ -20,7 +20,7 @@ const emit = defineEmits(["clickNext", "clickPrev"]);
         <div class="w-full md:max-h-none">
           <img
             :src="`/img/boxarts/${data.id}.webp`"
-            class="sm:w-full object-contain h-full max-h-[250px] sm:h-auto sm:max-h-none mx-auto"
+            class="lg:w-full object-contain h-full max-h-[250px] lg:h-auto sm:max-h-none mx-auto"
           />
         </div>
 
@@ -54,9 +54,9 @@ const emit = defineEmits(["clickNext", "clickPrev"]);
       </div>
     </div>
 
-    <!-- Navigation buttons from tablet -->
+    <!-- Navigation buttons from 1024 -->
     <div
-      class="absolute bottom-4 left-1/2 -translate-x-1/2 hidden md:flex items-center justify-center gap-4"
+      class="absolute bottom-4 left-1/2 -translate-x-1/2 hidden lg:flex items-center justify-center gap-4"
     >
       <NavigationButtons
         mode="desktop"
