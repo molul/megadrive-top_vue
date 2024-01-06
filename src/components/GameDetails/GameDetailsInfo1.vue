@@ -46,7 +46,7 @@ const emit = defineEmits(["clickNext", "clickPrev"]);
         
           <div class="font-bold">Release date</div>
           <div>{{ data.year || "" }}</div>
-        <
+        
         
           <div class="font-bold">Developer</div>
           <div>{{ data.developer || "" }}</div>
