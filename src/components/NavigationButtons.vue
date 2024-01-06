@@ -8,7 +8,7 @@ defineProps(["mode"]);
 
 <template>
   <div
-    class="z-50 bg-black opacity-50 hover:opacity-100 shadow-md rounded cursor-pointer transition-opacity duration-300"
+    class="z-50 bg-black/0 hover:bg-black/100 shadow-md rounded cursor-pointer transition-colors duration-300"
     :class="{
       'absolute left-2 md:hidden': mode === 'mobile',
     }"
@@ -17,7 +17,7 @@ defineProps(["mode"]);
     <Icon icon="solar:alt-arrow-left-outline" class="size-10" />
   </div>
   <div
-    class="z-50 bg-black opacity-50 hover:opacity-100 shadow-md rounded cursor-pointer transition-opacity duration-300"
+    class="z-50 bg-black/0 hover:bg-black/100 shadow-md rounded cursor-pointer transition-colors duration-300"
     :class="{
       'absolute right-2 md:hidden': mode === 'mobile',
     }"

@@ -3,6 +3,8 @@ import { ref, defineExpose, defineEmits } from "vue";
 import CloseButton from "./CloseButton.vue";
 import Title from "./Title.vue";
 import NavigationButtons from "./NavigationButtons.vue";
+import GameDetailsInfo1 from "./GameDetails/GameDetailsInfo1.vue";
+import GameDetailsInfo2 from "./GameDetails/GameDetailsInfo2.vue";
 import Number from "./Number.vue";
 import { Icon } from "@iconify/vue";
 import { onClickOutside } from "@vueuse/core";
@@ -164,93 +166,14 @@ defineExpose({ data, number, expand, showInnerContent });
             </div>
 
             <!-- Boxart, name and info -->
-            <div
-              v-if="data"
-              class="w-full sm:w-1/3 sticky top-0 flex flex-col h-full"
-            >
-              <div class="flex flex-col overflow-hidden sticky top-0">
-                <!-- Boxart with nav buttons mobile -->
-                <div
-                  class="relative flex items-center justify-between gap-4 h-full"
-                >
-                  <!-- Image -->
-                  <div>
-                    <img
-                      :src="`/img/boxarts/${data.id}.webp`"
-                      class="w-3/5 sm:w-full object-contain mx-auto"
-                    />
-                  </div>
-
-                  <!-- Navigation buttons from tablet -->
-                  <NavigationButtons
-                    mode="mobile"
-                    @click-prev="emit('clickPrev')"
-                    @click-next="emit('clickNext')"
-                  />
-                </div>
-              </div>
-
-              <!-- Title, info and nav buttons tablet and desktop -->
-              <div class="flex flex-col gap-1 md:gap-4 p-2 md:p-4">
-                <Title :text="data.name || ''" size="lg" />
-
-                <!-- Info -->
-                <div class="text-xs md:text-sm">
-                  <div>
-                    <span class="font-bold">Genre:</span>
-                    {{ data.genres?.join(", ") }}
-                  </div>
-                  <div>
-                    <span class="font-bold">Release date:</span>
-                    {{ data.year || "" }}
-                  </div>
-                  <div>
-                    <span class="font-bold">Developer:</span>
-                    {{ data.developer || "" }}
-                  </div>
-                </div>
-              </div>
-
-              <!-- Navigation buttons from tablet -->
-              <div
-                class="absolute bottom-4 left-1/2 -translate-x-1/2 hidden md:flex items-center justify-center gap-8"
-              >
-                <NavigationButtons
-                  mode="desktop"
-                  @click-prev="emit('clickPrev')"
-                  @click-next="emit('clickNext')"
-                />
-              </div>
-            </div>
+            <GameDetailsInfo1
+              :data="data"
+              @click-next="emit('clickNext')"
+              @click-prev="emit('clickPrev')"
+            />
 
             <!-- Synopsys and screenshots -->
-            <div class="w-full sm:w-2/3 overflow-y-scroll h-full p-2 md:p-4">
-              <div class="flex flex-col gap-4 md:gap-8">
-                <div class="flex flex-col gap-2 md:gap-4">
-                  <Title text="Synopsis" size="lg" />
-                  <div
-                    v-if="data?.description"
-                    class="flex flex-col gap-2 text-xs md:text-sm"
-                  >
-                    <p v-for="paragraph in data.description">{{ paragraph }}</p>
-                    <div v-for="index in 25">Testing scroll ...{{ index }}</div>
-                  </div>
-                </div>
-                <div class="flex flex-col gap-2 md:gap-4">
-                  <Title text="Screenshots" size="lg" />
-                  <div class="flex justify-start flex-wrap gap-2 md:gap-4">
-                    <div
-                      v-for="index in 2"
-                      class="w-[320px] h-[224px] overflow-hidden"
-                    >
-                      <img
-                        :src="`/img/screenshots/dynamite_headdy_${index}.png`"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <GameDetailsInfo2 :data="data" />
           </div>
         </div>
       </div>
