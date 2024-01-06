@@ -6,7 +6,7 @@ defineProps(["data"]);
 
 <template>
   <div
-    class="w-full sm:w-2/3 overflow-y-scroll h-full px-2 py-4 md:px-6 md:py-4"
+    class="w-full lg:w-2/3 overflow-y-scroll h-full px-2 py-4 md:px-6 md:py-4"
   >
     <div class="flex flex-col gap-6 md:gap-8">
       <div class="flex flex-col gap-2 md:gap-3">
