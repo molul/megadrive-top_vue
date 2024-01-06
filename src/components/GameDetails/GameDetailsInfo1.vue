@@ -51,7 +51,7 @@ const emit = defineEmits(["clickNext", "clickPrev"]);
           <th class="font-bold">Developer</th>
           <td>{{ data.developer || "" }}</td>
         </tr>
-      </div>
+      </table>
     </div>
 
     <!-- Navigation buttons from tablet -->
