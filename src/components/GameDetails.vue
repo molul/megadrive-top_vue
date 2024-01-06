@@ -153,7 +153,7 @@ defineExpose({ data, number, expand, showInnerContent });
 
           <!-- Inner content -->
           <div
-            :class="`flex grow flex-col md:flex-row transition-opacity duration-300 h-full overflow-hidden ${
+            :class="`flex grow flex-col lg:flex-row transition-opacity duration-300 h-full overflow-hidden ${
               showInnerContent ? 'opacity-100' : 'opacity-0'
             }`"
           >
