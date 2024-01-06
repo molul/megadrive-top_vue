@@ -38,7 +38,7 @@ const emit = defineEmits(["clickNext", "clickPrev"]);
       <Title :text="data.name || ''" size="lg" centered="true" />
 
       <!-- Info -->
-      <div class=" grid grid-cols-2 text-xs md:text-sm w-full max-w-lg mx-auto divide divide-yellow-400">
+      <div class=" grid grid-cols-2 text-xs md:text-sm w-full max-w-lg mx-auto divide-x divide-yellow-400">
         
           <div class="font-bold ">Genre</div>
           <div>{{ data.genres?.join(", ") }}</div>
