@@ -4,7 +4,7 @@ import { Icon } from "@iconify/vue";
 
 <template>
   <div
-    class="z-50 absolute top-2 right-2.5 text-center bg-white rounded-full shadow-lg hover:text-white cursor-pointer"
+    class="z-50 absolute -top-4 -right-4 text-center bg-white rounded-full shadow-lg hover:text-white cursor-pointer"
   >
     <Icon
       icon="solar:close-circle-bold"
