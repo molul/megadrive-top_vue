@@ -29,12 +29,10 @@ const parent = ref();
         />
       </div>
       <!-- Name -->
-      <div class="gridBg w-full h-full flex flex-col items-center">
-        <div
-          class="flex flex-col items-center font-bold text-lg lg:text-xl p-4 text-center"
-        >
-          {{ data.name }}
-        </div>
+      <div
+        class="gridBg size-full flex justify-center items-center text-lg lg:text-xl p-4 text-center"
+      >
+        {{ data.name }}
       </div>
     </div>
   </div>
