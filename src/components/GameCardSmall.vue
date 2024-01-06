@@ -22,8 +22,10 @@ defineProps(["number", "data"]);
         :src="`/img/boxarts/${data.id}.webp`"
       />
     </div>
-    <div class="bg-gradient-to-b from-[#ca2cd8] to-[#1d54df] w-full h-full">
-      <div class="font-bold text-lg lg:text-xl p-4 h-full text-center">
+    <div class="gridBg w-full h-full flex flex-col items-center">
+      <div
+        class="flex flex-col items-center font-bold text-lg lg:text-xl p-4 text-center"
+      >
         {{ data.name }}
       </div>
     </div>
