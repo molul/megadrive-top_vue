@@ -132,6 +132,13 @@ defineExpose({ data, showContent: showInnerContent, fullScreen, expand });
               showInnerContent ? 'opacity-100' : 'opacity-0'
             }`"
           >
+            <!-- Image background -->
+            <div
+              v-if="data"
+              class="absolute bottom-0 md:top-0 right-0 overflow-hidden opacity-5 pointer-events-none"
+            >
+              <img :src="`/img/boxarts/${data.id}.webp`" />
+            </div>
             <!-- Boxart, name and info -->
             <div v-if="data" class="w-full sm:w-1/3 sticky top-0 flex flex-col">
               <div class="flex flex-col overflow-hidden sticky top-0">

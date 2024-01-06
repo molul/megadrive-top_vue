@@ -8,7 +8,7 @@ defineProps(["number", "data"]);
   >
     <!-- Number -->
     <div
-      class="absolute top-2 right-2 bg-black/80 border-4 border-gray-200 shadow-md size-14 rounded-full flex items-center justify-center z-10"
+      class="text-lg absolute top-2 right-2 bg-black/80 border-4 border-gray-200 shadow-md size-14 rounded-full flex items-center justify-center z-10"
     >
       {{ number + 1 }}
     </div>

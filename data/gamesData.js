@@ -1,7 +1,7 @@
 export const gamesData = [
   // 1-5
   {
-    id: "sonic_3_and_knucles",
+    id: "sonic_3_and_knuckles",
     name: "Sonic 3 & Knuckles",
     description: ["Blablabla", "Blablabla2"],
     year: 1994,
