@@ -1,6 +1,6 @@
 <script setup>
-import NavigationButtons from "../NavigationButtons.vue";
-import Title from "../Title.vue";
+import NavigationButtons from "@/components/Buttons/NavigationButtons.vue";
+import Title from "@/components/Common/Title.vue";
 
 defineProps(["data"]);
 const emit = defineEmits(["clickNext", "clickPrev"]);
@@ -9,7 +9,7 @@ const emit = defineEmits(["clickNext", "clickPrev"]);
 <template>
   <div
     v-if="data"
-    class="w-full lg:w-1/3 sticky top-0 flex flex-col gridBg bg-black py-2 md:py-0"
+    class="z-10 w-full lg:w-1/3 sticky top-0 flex flex-col gridBg bg-black py-2 md:py-0"
   >
     <div class="flex flex-col overflow-hidden sticky top-0">
       <!-- Boxart with nav buttons mobile -->
@@ -38,31 +38,24 @@ const emit = defineEmits(["clickNext", "clickPrev"]);
       <Title :text="data.name || ''" size="lg" centered="true" />
 
       <!-- Info -->
-      <div class=" grid grid-cols-2 text-xs md:text-sm w-full max-w-lg mx-auto divide-x divide-yellow-400">
-        
-          <div class="font-bold ">Genre</div>
-          <div>{{ data.genres?.join(", ") }}</div>
-        
-        
-          <div class="font-bold">Release date</div>
-          <div>{{ data.year || "" }}</div>
-        
-        
-          <div class="font-bold">Developer</div>
-          <div>{{ data.developer || "" }}</div>
-        
-      </div>
-    </div>
+      <table
+        class="text-xs md:text-sm w-full max-w-lg mx-auto divide-y divide-gray-400"
+      >
+        <tr>
+          <td class="font-bold">Genre</td>
+          <td>{{ data.genres?.join(", ") }}</td>
+        </tr>
 
-    <!-- Navigation buttons from 1024 -->
-    <div
-      class="absolute bottom-4 left-1/2 -translate-x-1/2 hidden lg:flex items-center justify-center gap-4"
-    >
-      <NavigationButtons
-        mode="desktop"
-        @click-prev="emit('clickPrev')"
-        @click-next="emit('clickNext')"
-      />
+        <tr>
+          <td class="font-bold">Release date</td>
+          <td>{{ data.year || "" }}</td>
+        </tr>
+
+        <tr>
+          <td class="font-bold">Developer</td>
+          <td>{{ data.developer || "" }}</td>
+        </tr>
+      </table>
     </div>
   </div>
 </template>

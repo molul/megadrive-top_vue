@@ -12,6 +12,10 @@ export default {
       transitionProperty: {
         spacing: "margin, padding",
       },
+      colors: {
+        mdpurple: "rgba(202,44,216,1)",
+        mdblue: "rgba(29,84,223,1)",
+      },
     },
   },
   plugins: [],

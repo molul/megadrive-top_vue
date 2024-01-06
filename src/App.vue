@@ -1,16 +1,18 @@
 <script setup>
 import { ref } from "vue";
-import GameDetails from "./components/GameDetails.vue";
+import GameDetails from "@/components/GameDetails.vue";
+import GameCard from "@/components/GameCard.vue";
+import Header from "@/components/Layout/Header.vue";
+import Footer from "@/components/Layout/Footer.vue";
+import BlackBg from "@/components/Layout/BlackBg.vue";
 
-import GameCard from "./components/GameCard.vue";
-import Header from "./components/Header.vue";
-import Footer from "./components/Footer.vue";
 import { gamesData } from "../data/gamesData";
 
 const gameDetails = ref();
 const fullScreen = ref();
 const cardsGrid = ref();
 const currentCardNumber = ref();
+
 // -------------------------------------------------------------
 // openGameDetails
 // -------------------------------------------------------------
@@ -81,16 +83,7 @@ function updateGameDetails(number) {
       @click-next="goToNextGame"
       @click-prev="goToPreviousGame"
     />
-
-    <div
-      class="bg-black fixed top-0 left-0 w-screen h-screen z-20 pointer-events-none transition-opacity duration-300"
-      :class="{
-        'opacity-80': fullScreen,
-        'opacity-0': !fullScreen,
-      }"
-    >
-      &nbsp;
-    </div>
+    <BlackBg :full-screen="fullScreen" />
 
     <!-- Content -->
     <div

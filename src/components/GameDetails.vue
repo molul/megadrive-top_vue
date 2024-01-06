@@ -1,12 +1,11 @@
 <script setup>
 import { ref, defineExpose, defineEmits } from "vue";
-import CloseButton from "./CloseButton.vue";
-import Title from "./Title.vue";
-import NavigationButtons from "./NavigationButtons.vue";
-import GameDetailsInfo1 from "./GameDetails/GameDetailsInfo1.vue";
-import GameDetailsInfo2 from "./GameDetails/GameDetailsInfo2.vue";
-import Number from "./Number.vue";
-import { Icon } from "@iconify/vue";
+import CloseButton from "@/components/Buttons/CloseButton.vue";
+import GameDetailsInfo1 from "@/components/GameDetails/GameDetailsInfo1.vue";
+import GameDetailsInfo2 from "@/components/GameDetails/GameDetailsInfo2.vue";
+import Number from "@/components/Common/Number.vue";
+import NavigationButtons from "@/components/Buttons/NavigationButtons.vue";
+import GameDetailsBgImage from "@/components/GameDetails/GameDetailsBgImage.vue";
 import { onClickOutside } from "@vueuse/core";
 
 const container = ref();
@@ -133,7 +132,7 @@ defineExpose({ data, number, expand, showInnerContent });
       <div class="flex size-full items-center justify-center">
         <div
           ref="content"
-          class="relative text-xs md:text-sm lg:text-base text-white bg-gradient-to-br from-[rgba(202,44,216,1)] to-[rgba(29,84,223,1)] rounded shadow-md h-full items-start border-4 border-zinc-400 gap-4 w-full max-w-6xl transition-opacity duration-500"
+          class="relative text-xs md:text-sm lg:text-base text-white bg-gradient-to-br from-mdpurple to-mdblue rounded shadow-md h-full items-start border-4 border-zinc-400 gap-4 w-full max-w-6xl transition-opacity duration-500"
           :class="{
             'opacity-0': !showContent,
           }"
@@ -157,7 +156,15 @@ defineExpose({ data, number, expand, showInnerContent });
               showInnerContent ? 'opacity-100' : 'opacity-0'
             }`"
           >
-            
+            <div
+              class="absolute left-1/2 -translate-x-1/2 hidden lg:flex items-center justify-between w-full gap-4 z-50 top-1/2"
+            >
+              <NavigationButtons
+                mode="desktop"
+                @click-prev="emit('clickPrev')"
+                @click-next="emit('clickNext')"
+              />
+            </div>
 
             <!-- Boxart, name and info -->
             <GameDetailsInfo1
@@ -169,13 +176,17 @@ defineExpose({ data, number, expand, showInnerContent });
             <!-- Synopsys and screenshots -->
             <GameDetailsInfo2 :data="data" />
 
-<!-- Image background -->
-            <div
+            <!-- Image background -->
+            <!-- <GameDetailsBgImage
+              v-if="data"
+              :src="`/img/boxarts/${data.id}.webp`"
+            /> -->
+            <!-- <div
               v-if="data"
               class="absolute bottom-0 md:top-0 right-0 overflow-hidden opacity-5 pointer-events-none"
             >
               <img :src="`/img/boxarts/${data.id}.webp`" />
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
