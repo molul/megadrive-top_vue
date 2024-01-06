@@ -6,7 +6,7 @@ defineProps(["data"]);
 
 <template>
   <div
-    class="w-full lg:w-2/3 overflow-y-scroll h-full px-2 py-4 md:px-6 md:py-4"
+    class="w-full lg:w-3/4 overflow-y-scroll h-full px-2 py-4 md:px-6 md:py-4"
   >
     <div
       v-if="data"

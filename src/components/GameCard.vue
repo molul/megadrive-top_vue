@@ -1,29 +1,23 @@
 <script setup>
 import { ref, defineEmits, defineProps } from "vue";
 import Number from "@/components/Common/Number.vue";
+
 defineProps(["number", "data"]);
 
-const emit = defineEmits(["openGameDetails"]);
+defineEmits(["openGameDetails"]);
 
 const parent = ref();
-
-// -------------------------------------------------------------
-// handleClick
-// -------------------------------------------------------------
-function handleClick() {
-  emit("openGameDetails", props.number);
-}
 </script>
 
 <template>
-  <div ref="parent" @click="emit('openGameDetails', number)" class="h-full">
+  <div ref="parent" @click="$emit('openGameDetails', number)" class="h-full">
     <div
       class="relative cursor-pointer text-xs md:text-sm lg:text-base text-white rounded-lg shadow-md flex items-start flex-col h-full gap-0 transition-opacity duration-300 overflow-hidden min-h-[300px] border-4 border-gray-300"
     >
       <!-- Number -->
       <Number :number="number" />
 
-      <!-- Boxart, name and info -->
+      <!-- Boxart -->
       <div class="w-full">
         <img
           class="object-none object-[65%_40%] w-full h-72"
@@ -34,6 +28,7 @@ function handleClick() {
           :src="`/img/boxarts/${data.id}.webp`"
         />
       </div>
+      <!-- Name -->
       <div class="gridBg w-full h-full flex flex-col items-center">
         <div
           class="flex flex-col items-center font-bold text-lg lg:text-xl p-4 text-center"

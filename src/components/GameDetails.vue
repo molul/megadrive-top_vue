@@ -132,7 +132,7 @@ defineExpose({ data, number, expand, showInnerContent });
       <div class="flex size-full items-center justify-center">
         <div
           ref="content"
-          class="relative text-xs md:text-sm lg:text-base text-white bg-gradient-to-br from-mdpurple to-mdblue rounded shadow-md h-full items-start border-4 border-zinc-400 gap-4 w-full max-w-6xl transition-opacity duration-500"
+          class="relative text-xs md:text-sm lg:text-base text-white bg-gradient-to-br from-mdpurple to-mdblue rounded shadow-md h-full items-start border-4 border-zinc-400 gap-4 w-full max-w-7xl transition-opacity duration-500"
           :class="{
             'opacity-0': !showContent,
           }"

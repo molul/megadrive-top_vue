@@ -76,6 +76,7 @@ function updateGameDetails(number) {
 <template>
   <div class="font-main">
     <Header />
+
     <!-- Expandable container -->
     <GameDetails
       ref="gameDetails"
@@ -83,6 +84,8 @@ function updateGameDetails(number) {
       @click-next="goToNextGame"
       @click-prev="goToPreviousGame"
     />
+
+    <!-- Expandable container black bg -->
     <BlackBg :full-screen="fullScreen" />
 
     <!-- Content -->
@@ -90,7 +93,6 @@ function updateGameDetails(number) {
       ref="cardsGrid"
       class="p-4 grid grid-cols-none sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 bg-black/70"
     >
-      <!-- Cards -->
       <div v-for="(gameData, index) in gamesData" :key="gameData.id">
         <GameCard
           :number="index"
