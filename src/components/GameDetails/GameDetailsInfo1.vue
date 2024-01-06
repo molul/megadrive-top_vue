@@ -17,10 +17,10 @@ const emit = defineEmits(["clickNext", "clickPrev"]);
         class="relative flex items-center justify-between gap-4 h-full py-2 md:py-0"
       >
         <!-- Image -->
-        <div class="max-h-[200px] md:max-h-none">
+        <div class="w-full max-h-[200px] md:max-h-none bg-red-400">
           <img
             :src="`/img/boxarts/${data.id}.webp`"
-            class="w-full sm:w-full object-contain h-full max-h-[200px] sm:h-auto mx-auto"
+            class="w-full sm:w-full object-contain h-full max-h-[200px] sm:h-auto mx-auto bg-yellow-400"
           />
         </div>
 
