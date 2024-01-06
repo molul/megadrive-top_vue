@@ -81,7 +81,7 @@ function expand(card) {
 
     // Add padding
     setTimeout(() => {
-      bgWrapper.value.classList.add("p-6");
+      bgWrapper.value.classList.add("p-4");
     }, 30);
 
     // Show inner content
@@ -102,7 +102,7 @@ function close() {
 
   document.body.classList.remove("overflow-hidden");
   setContainerRect(parentRect);
-  bgWrapper.value.classList.remove("p-6");
+  bgWrapper.value.classList.remove("p-4");
 
   setTimeout(() => {
     showContent.value = false;
