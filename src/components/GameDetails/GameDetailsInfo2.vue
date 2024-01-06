@@ -19,7 +19,7 @@ defineProps(["data"]);
       </div>
       <div class="flex flex-col gap-2 md:gap-3">
         <Title text="Screenshots" size="lg" />
-        <div class="flex justify-start flex-wrap gap-2 md:gap-4">
+        <div class="flex justify-center flex-wrap gap-2 md:gap-4">
           <div v-if="data" v-for="index in 6" class="overflow-hidden">
             <a
               :href="`/img/screenshots/${data.id}_${index}.webp`"
