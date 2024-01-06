@@ -110,7 +110,7 @@ function close() {
   }, 250);
 }
 
-defineExpose({ data, expand });
+defineExpose({ data, expand, showInnerContent });
 </script>
 
 <template>
@@ -139,8 +139,8 @@ defineExpose({ data, expand });
             @click.stop="close"
             class="transition-opacity duration-300"
             :class="{
-              'opacity-100': showInnerContent,
-              'opacity-0': !showInnerContent,
+              'opacity-100': showContent,
+              'opacity-0': !showContent,
             }"
           />
           <!-- Navigation buttons -->

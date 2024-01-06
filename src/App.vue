@@ -34,23 +34,33 @@ function closeGameDetails() {
 // goToNextGame
 // -------------------------------------------------------------
 function goToNextGame() {
-  currentCardNumber.value =
-    currentCardNumber.value < gamesData.length - 1
-      ? currentCardNumber.value + 1
-      : 0;
-  gameDetails.value.data = gamesData[currentCardNumber.value];
-  currentCardNumber.value = currentCardNumber.value;
+  gameDetails.value.showInnerContent = false;
+
+  setTimeout(() => {
+    currentCardNumber.value =
+      currentCardNumber.value < gamesData.length - 1
+        ? currentCardNumber.value + 1
+        : 0;
+    gameDetails.value.data = gamesData[currentCardNumber.value];
+    currentCardNumber.value = currentCardNumber.value;
+    gameDetails.value.showInnerContent = true;
+  }, 200);
 }
 // -------------------------------------------------------------
 // goToPreviousGame
 // -------------------------------------------------------------
 function goToPreviousGame() {
-  currentCardNumber.value =
-    currentCardNumber.value > 0
-      ? currentCardNumber.value - 1
-      : gamesData.length - 1;
-  gameDetails.value.data = gamesData[currentCardNumber.value];
-  currentCardNumber.value = currentCardNumber.value;
+  gameDetails.value.showInnerContent = false;
+
+  setTimeout(() => {
+    currentCardNumber.value =
+      currentCardNumber.value > 0
+        ? currentCardNumber.value - 1
+        : gamesData.length - 1;
+    gameDetails.value.data = gamesData[currentCardNumber.value];
+    currentCardNumber.value = currentCardNumber.value;
+    gameDetails.value.showInnerContent = true;
+  }, 200);
 }
 </script>
 
