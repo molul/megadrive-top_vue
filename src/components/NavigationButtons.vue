@@ -10,7 +10,7 @@ defineProps(["mode"]);
   <div
     class="z-50 bg-black/0 hover:bg-black/100 shadow-md rounded cursor-pointer transition-colors duration-300"
     :class="{
-      'absolute left-2 md:hidden': mode === 'mobile',
+      'absolute left-2 lg:hidden': mode === 'mobile',
     }"
     @click="emit('clickPrev')"
   >
@@ -19,7 +19,7 @@ defineProps(["mode"]);
   <div
     class="z-50 bg-black/0 hover:bg-black/100 shadow-md rounded cursor-pointer transition-colors duration-300"
     :class="{
-      'absolute right-2 md:hidden': mode === 'mobile',
+      'absolute right-2 lg:hidden': mode === 'mobile',
     }"
     @click="emit('clickNext')"
   >
