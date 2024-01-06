@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div class="text-white text-center bg-black bg-opacity-90 p-4">
+  <div class="text-white text-center bg-black/90 p-4">
     Developed by
     <a
       href="https://www.luismorcilloluque.com/en"

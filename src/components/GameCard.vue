@@ -1,15 +1,13 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, defineEmits, defineProps } from "vue";
 import GameCardSmall from "./GameCardSmall.vue";
-import GameCardExpanded from "./GameCardExpanded.vue";
 
-defineProps(["number", "title", "text", "fullScreen", "data"]);
+const props = defineProps(["number", "fullScreen", "data"]);
 
-const fullScreen = ref(false);
-const showContent = ref(false);
+const emit = defineEmits(["openGameDetails"]);
+
 const parent = ref();
-const child = ref();
-const gameCardExpanded = ref();
+const fullScreen = ref(false);
 
 const parentRect = ref({
   left: 0,
@@ -17,13 +15,6 @@ const parentRect = ref({
   width: "100%",
   height: "100%",
 });
-
-const fullScreenRect = {
-  left: 0,
-  top: 0,
-  width: "100%",
-  height: "100%",
-};
 
 // -------------------------------------------------------------
 // getParentRect
@@ -38,86 +29,19 @@ function getParentRect() {
 }
 
 // -------------------------------------------------------------
-// setChildRect
-// -------------------------------------------------------------
-function setChildRect(rect) {
-  Object.keys(rect).forEach((prop) => {
-    child.value.style[prop] = rect[prop];
-  });
-}
-
-// -------------------------------------------------------------
-// setPositions
-// -------------------------------------------------------------
-function setZIndex() {
-  child.value.style.zIndex = fullScreen.value ? 50 : 1;
-}
-
-// -------------------------------------------------------------
 // handleClick
 // -------------------------------------------------------------
 function handleClick() {
-  if (!fullScreen.value) {
-    fullScreen.value = !fullScreen.value;
+  // document.body.classList.add("overflow-hidden");
+  parentRect.value = getParentRect();
 
-    document.body.classList.add("overflow-hidden");
-
-    parentRect.value = getParentRect();
-    // console.log(parentRect.value);
-
-    setChildRect(parentRect.value);
-    setZIndex();
-    //transition-all
-    setTimeout(() => {
-      setChildRect(fullScreenRect);
-    }, 100);
-    setTimeout(() => {
-      gameCardExpanded.value.showContent = true;
-    }, 500);
-  }
-}
-
-// -------------------------------------------------------------
-// closeCard
-// -------------------------------------------------------------
-function closeCard() {
-  document.body.classList.remove("overflow-hidden");
-  setChildRect(parentRect.value);
-
-  setTimeout(() => {
-    fullScreen.value = false;
-    setZIndex();
-  }, 400);
+  emit("openGameDetails", parentRect.value, props.number);
 }
 </script>
 
 <template>
   <div ref="parent" @click="handleClick" class="h-full">
-    <!-- Actual card -->
-    <GameCardSmall
-      :title="title"
-      :text="text"
-      :full-screen="fullScreen"
-      :number="number"
-      :data="data"
-    />
-
-    <!-- Expandable container -->
-    <div
-      ref="child"
-      class="fixed transition-all duration-[500ms]"
-      :class="fullScreen ? 'pointer-events-auto' : 'pointer-events-none'"
-    >
-      <GameCardExpanded
-        ref="gameCardExpanded"
-        :full-screen="fullScreen"
-        :show-content="showContent"
-        :title="title"
-        :text="text"
-        :data="data"
-        @close-card="closeCard"
-      />
-    </div>
+    <GameCardSmall :number="number" :data="data" />
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <script setup>
-defineProps(["text", "title", "fullScreen", "number", "data"]);
+defineProps(["number", "data"]);
 </script>
 
 <template>
@@ -8,7 +8,7 @@ defineProps(["text", "title", "fullScreen", "number", "data"]);
   >
     <!-- Number -->
     <div
-      class="absolute top-2 right-2 bg-black bg-opacity-80 border-4 border-gray-200 shadow-md size-14 rounded-full flex items-center justify-center z-10"
+      class="absolute top-2 right-2 bg-black/80 border-4 border-gray-200 shadow-md size-14 rounded-full flex items-center justify-center z-10"
     >
       {{ number + 1 }}
     </div>
@@ -23,10 +23,6 @@ defineProps(["text", "title", "fullScreen", "number", "data"]);
       <div class="font-bold text-lg lg:text-xl p-4 h-full text-center">
         {{ data.name }}
       </div>
-      <!-- Synopsys and screenshots -->
-      <!-- <div class="w-full px-4 pb-4 text-sm h-full">
-        {{ data.description.join(". ").slice(0, 150) + "..." }}
-      </div> -->
     </div>
   </div>
 </template>

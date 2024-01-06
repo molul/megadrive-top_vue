@@ -6,8 +6,8 @@ defineProps(["text", "size"]);
   <div
     class="font-bold"
     :class="{
-      'text-xl': size === 'xl',
-      'text-lg': size === 'lg',
+      'text-xl md:text-2xl': size === 'xl',
+      'text-lg md:text-xl': size === 'lg',
     }"
   >
     {{ text }}

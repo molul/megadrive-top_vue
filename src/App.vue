@@ -1,32 +1,63 @@
 <script setup>
+import { ref } from "vue";
+import GameDetails from "./components/GameDetails.vue";
+
 import GameCard from "./components/GameCard.vue";
 import Logo from "./components/Logo.vue";
 import Footer from "./components/Footer.vue";
 import { gamesData } from "../data/gamesData";
 
-const text = [
-  "Dynamite Headdy is a platformer... with a difference. You control a little character whose main attack comes from his disembodied head.",
-  "Yes, years before Rayman appeared, we already had a hero who used detachable appendages to attack his enemies. Rather than the traditional power-ups, Dynamite Headdy enables you to swap your head for different kinds – such as heads that heal you or heads that stick on to walls. You use your head in order to climb up on platforms as well, as you can grab hold of things with it, and on certain stages of the Mega Drive/Genesis version it is used to turn the game into a side-scrolling shooter, as you gain a propeller, jet, or bird head. Basically, Dynamite Headdy is just a traditional platformer at heart.",
-];
+const gameDetails = ref();
+const fullScreen = ref();
 
-const title = "Dynamite Headdy";
+// -------------------------------------------------------------
+// openGameDetails
+// -------------------------------------------------------------
+function openGameDetails(parentRect, index) {
+  gameDetails.value.data = gamesData[index];
+  gameDetails.value.expand(parentRect);
+  fullScreen.value = true;
+}
+
+// -------------------------------------------------------------
+// closeGameDetails
+// -------------------------------------------------------------
+function closeGameDetails() {
+  fullScreen.value = false;
+}
 </script>
 
 <template>
   <div class="font-main">
     <Logo />
+    <!-- Content -->
     <div
-      class="p-4 grid grid-cols-none sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 bg-black bg-opacity-70"
+      class="p-4 grid grid-cols-none sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 bg-black/70"
     >
-      <div v-for="(gameData, index) in gamesData" :key="number">
+      <!-- Expandable container -->
+      <GameDetails ref="gameDetails" @close="closeGameDetails()" />
+
+      <div
+        class="bg-black fixed top-0 left-0 w-screen h-screen z-20 pointer-events-none transition-opacity duration-300"
+        :class="{
+          'opacity-80': fullScreen,
+          'opacity-0': !fullScreen,
+        }"
+      >
+        &nbsp;
+      </div>
+      <!-- Cards -->
+      <div v-for="(gameData, index) in gamesData" :key="index">
         <GameCard
           :number="index"
-          :title="title"
-          :text="text"
           :data="gameData"
+          @open-game-details="
+            (parentRect, number) => openGameDetails(parentRect, number)
+          "
         />
       </div>
     </div>
+
     <Footer />
   </div>
 </template>
