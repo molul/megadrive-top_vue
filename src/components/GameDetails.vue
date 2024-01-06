@@ -2,13 +2,15 @@
 import { ref, defineExpose, defineEmits } from "vue";
 import CloseButton from "./CloseButton.vue";
 import Title from "./Title.vue";
+import NavigationButtons from "./NavigationButtons.vue";
+import Number from "./Number.vue";
 import { Icon } from "@iconify/vue";
 import { onClickOutside } from "@vueuse/core";
 
 const container = ref();
 const content = ref();
 const bgWrapper = ref();
-
+const number = ref();
 const data = ref(null);
 const showContent = ref(false);
 const showInnerContent = ref(false);
@@ -110,7 +112,7 @@ function close() {
   }, 250);
 }
 
-defineExpose({ data, expand, showInnerContent });
+defineExpose({ data, number, expand, showInnerContent });
 </script>
 
 <template>
@@ -134,6 +136,9 @@ defineExpose({ data, expand, showInnerContent });
             'opacity-0': !showContent,
           }"
         >
+          <!-- Number -->
+          <Number :number="number" />
+
           <!-- Close button -->
           <CloseButton
             @click.stop="close"
@@ -157,6 +162,7 @@ defineExpose({ data, expand, showInnerContent });
             >
               <img :src="`/img/boxarts/${data.id}.webp`" />
             </div>
+
             <!-- Boxart, name and info -->
             <div
               v-if="data"
@@ -167,12 +173,6 @@ defineExpose({ data, expand, showInnerContent });
                 <div
                   class="relative flex items-center justify-between gap-4 h-full"
                 >
-                  <div
-                    class="absolute left-2 md:hidden z-50 bg-black opacity-50 hover:opacity-100 shadow-md rounded cursor-pointer transition-opacity duration-300"
-                    @click="emit('clickPrev')"
-                  >
-                    <Icon icon="solar:alt-arrow-left-outline" class="size-10" />
-                  </div>
                   <!-- Image -->
                   <div>
                     <img
@@ -180,15 +180,13 @@ defineExpose({ data, expand, showInnerContent });
                       class="w-3/5 sm:w-full object-contain mx-auto"
                     />
                   </div>
-                  <div
-                    class="absolute md:hidden right-2 z-50 bg-black opacity-50 hover:opacity-100 shadow-md rounded cursor-pointer transition-opacity duration-300"
-                    @click="emit('clickNext')"
-                  >
-                    <Icon
-                      icon="solar:alt-arrow-right-outline"
-                      class="size-10"
-                    />
-                  </div>
+
+                  <!-- Navigation buttons from tablet -->
+                  <NavigationButtons
+                    mode="mobile"
+                    @click-prev="emit('clickPrev')"
+                    @click-next="emit('clickNext')"
+                  />
                 </div>
               </div>
 
@@ -217,20 +215,14 @@ defineExpose({ data, expand, showInnerContent });
               <div
                 class="absolute bottom-4 left-1/2 -translate-x-1/2 hidden md:flex items-center justify-center gap-8"
               >
-                <div
-                  class="z-50 bg-black opacity-50 hover:opacity-100 shadow-md rounded cursor-pointer transition-opacity duration-300"
-                  @click="emit('clickPrev')"
-                >
-                  <Icon icon="solar:alt-arrow-left-outline" class="size-10" />
-                </div>
-                <div
-                  class="z-50 bg-black opacity-50 hover:opacity-100 shadow-md rounded cursor-pointer transition-opacity duration-300"
-                  @click="emit('clickNext')"
-                >
-                  <Icon icon="solar:alt-arrow-right-outline" class="size-10" />
-                </div>
+                <NavigationButtons
+                  mode="desktop"
+                  @click-prev="emit('clickPrev')"
+                  @click-next="emit('clickNext')"
+                />
               </div>
             </div>
+
             <!-- Synopsys and screenshots -->
             <div class="w-full sm:w-2/3 overflow-y-scroll h-full p-2 md:p-4">
               <div class="flex flex-col gap-4 md:gap-8">

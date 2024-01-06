@@ -19,6 +19,7 @@ function openGameDetails(index) {
   const parent = cardsGrid.value.children[index];
   gameDetails.value.expand(parent);
 
+  gameDetails.value.number = index;
   gameDetails.value.data = gamesData[index];
 
   fullScreen.value = true;
@@ -41,11 +42,10 @@ function goToNextGame() {
       currentCardNumber.value < gamesData.length - 1
         ? currentCardNumber.value + 1
         : 0;
-    gameDetails.value.data = gamesData[currentCardNumber.value];
-    currentCardNumber.value = currentCardNumber.value;
-    gameDetails.value.showInnerContent = true;
+    updateGameDetails(currentCardNumber.value);
   }, 200);
 }
+
 // -------------------------------------------------------------
 // goToPreviousGame
 // -------------------------------------------------------------
@@ -57,10 +57,17 @@ function goToPreviousGame() {
       currentCardNumber.value > 0
         ? currentCardNumber.value - 1
         : gamesData.length - 1;
-    gameDetails.value.data = gamesData[currentCardNumber.value];
-    currentCardNumber.value = currentCardNumber.value;
-    gameDetails.value.showInnerContent = true;
+    updateGameDetails(currentCardNumber.value);
   }, 200);
+}
+
+// -------------------------------------------------------------
+// updateGameDetails
+// -------------------------------------------------------------
+function updateGameDetails(number) {
+  gameDetails.value.data = gamesData[number];
+  gameDetails.value.showInnerContent = true;
+  gameDetails.value.number = number;
 }
 </script>
 

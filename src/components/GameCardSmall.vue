@@ -1,21 +1,24 @@
 <script setup>
+import Number from "./Number.vue";
+
 defineProps(["number", "data"]);
 </script>
 
 <template>
   <div
-    class="relative cursor-pointer text-xs md:text-sm lg:text-base text-white rounded-lg shadow-md flex items-start flex-col h-full gap-0 transition-opacity duration-300 overflow-hidden min-h-[300px]"
+    class="relative cursor-pointer text-xs md:text-sm lg:text-base text-white rounded-lg shadow-md flex items-start flex-col h-full gap-0 transition-opacity duration-300 overflow-hidden min-h-[300px] border-4 border-gray-300"
   >
     <!-- Number -->
-    <div
-      class="text-lg absolute top-2 right-2 bg-black/80 border-4 border-gray-200 shadow-md size-14 rounded-full flex items-center justify-center z-10"
-    >
-      {{ number + 1 }}
-    </div>
+    <Number :number="number" />
+
     <!-- Boxart, name and info -->
     <div class="w-full">
       <img
         class="object-none object-[65%_40%] w-full h-72"
+        :class="{
+          'object-[65%_40%]': data.year >= 1994 && data.name === 'FIFA 95',
+          'object-[50%_40%]': data.year < 1994,
+        }"
         :src="`/img/boxarts/${data.id}.webp`"
       />
     </div>
