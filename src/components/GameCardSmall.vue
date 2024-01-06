@@ -16,8 +16,8 @@ defineProps(["number", "data"]);
       <img
         class="object-none object-[65%_40%] w-full h-72"
         :class="{
-          'object-[65%_40%]': data.year >= 1994,
-          'object-[45%_40%]': data.year < 1994 || data.name === 'FIFA 95',
+          'object-[45%_40%]': data.year >= 1994,
+          'object-[50%_40%]': data.year < 1994 || data.name === 'FIFA 95',
         }"
         :src="`/img/boxarts/${data.id}.webp`"
       />
