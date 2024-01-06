@@ -3,7 +3,7 @@ import { ref } from "vue";
 import GameDetails from "./components/GameDetails.vue";
 
 import GameCard from "./components/GameCard.vue";
-import Logo from "./components/Logo.vue";
+import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import { gamesData } from "../data/gamesData";
 
@@ -73,7 +73,7 @@ function updateGameDetails(number) {
 
 <template>
   <div class="font-main">
-    <Logo />
+    <Header />
     <!-- Expandable container -->
     <GameDetails
       ref="gameDetails"
