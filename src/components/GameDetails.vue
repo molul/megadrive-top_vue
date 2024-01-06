@@ -143,19 +143,7 @@ defineExpose({ data, expand, showInnerContent });
               'opacity-0': !showContent,
             }"
           />
-          <!-- Navigation buttons -->
-          <div
-            class="absolute -left-6 top-1/2 z-50 bg-black bg-opacity-60 rounded shadow-md"
-            @click="emit('clickPrev')"
-          >
-            <Icon icon="solar:alt-arrow-left-outline" class="size-10" />
-          </div>
-          <div
-            class="absolute -right-6 top-1/2 z-50 bg-black bg-opacity-60 shadow-md rounded"
-            @click="emit('clickNext')"
-          >
-            <Icon icon="solar:alt-arrow-right-outline" class="size-10" />
-          </div>
+
           <!-- Inner content -->
           <div
             :class="`flex grow flex-col md:flex-row transition-opacity duration-300 h-full overflow-hidden ${
@@ -170,15 +158,45 @@ defineExpose({ data, expand, showInnerContent });
               <img :src="`/img/boxarts/${data.id}.webp`" />
             </div>
             <!-- Boxart, name and info -->
-            <div v-if="data" class="w-full sm:w-1/3 sticky top-0 flex flex-col">
+            <div
+              v-if="data"
+              class="w-full sm:w-1/3 sticky top-0 flex flex-col h-full"
+            >
               <div class="flex flex-col overflow-hidden sticky top-0">
-                <img
-                  :src="`/img/boxarts/${data.id}.webp`"
-                  class="w-3/5 sm:w-full object-contain object-center mx-auto"
-                />
+                <!-- Boxart with nav buttons mobile -->
+                <div
+                  class="relative flex items-center justify-between gap-4 h-full"
+                >
+                  <div
+                    class="absolute left-2 md:hidden z-50 bg-black opacity-50 hover:opacity-100 shadow-md rounded cursor-pointer transition-opacity duration-300"
+                    @click="emit('clickPrev')"
+                  >
+                    <Icon icon="solar:alt-arrow-left-outline" class="size-10" />
+                  </div>
+                  <!-- Image -->
+                  <div>
+                    <img
+                      :src="`/img/boxarts/${data.id}.webp`"
+                      class="w-3/5 sm:w-full object-contain mx-auto"
+                    />
+                  </div>
+                  <div
+                    class="absolute md:hidden right-2 z-50 bg-black opacity-50 hover:opacity-100 shadow-md rounded cursor-pointer transition-opacity duration-300"
+                    @click="emit('clickNext')"
+                  >
+                    <Icon
+                      icon="solar:alt-arrow-right-outline"
+                      class="size-10"
+                    />
+                  </div>
+                </div>
               </div>
+
+              <!-- Title, info and nav buttons tablet and desktop -->
               <div class="flex flex-col gap-1 md:gap-4 p-2 md:p-4">
                 <Title :text="data.name || ''" size="lg" />
+
+                <!-- Info -->
                 <div class="text-xs md:text-sm">
                   <div>
                     <span class="font-bold">Genre:</span>
@@ -192,6 +210,24 @@ defineExpose({ data, expand, showInnerContent });
                     <span class="font-bold">Developer:</span>
                     {{ data.developer || "" }}
                   </div>
+                </div>
+              </div>
+
+              <!-- Navigation buttons from tablet -->
+              <div
+                class="absolute bottom-4 left-1/2 -translate-x-1/2 hidden md:flex items-center justify-center gap-8"
+              >
+                <div
+                  class="z-50 bg-black opacity-50 hover:opacity-100 shadow-md rounded cursor-pointer transition-opacity duration-300"
+                  @click="emit('clickPrev')"
+                >
+                  <Icon icon="solar:alt-arrow-left-outline" class="size-10" />
+                </div>
+                <div
+                  class="z-50 bg-black opacity-50 hover:opacity-100 shadow-md rounded cursor-pointer transition-opacity duration-300"
+                  @click="emit('clickNext')"
+                >
+                  <Icon icon="solar:alt-arrow-right-outline" class="size-10" />
                 </div>
               </div>
             </div>

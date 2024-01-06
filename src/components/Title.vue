@@ -1,5 +1,5 @@
 <script setup>
-defineProps(["text", "size"]);
+defineProps(["text", "size", "centered"]);
 </script>
 
 <template>
@@ -8,6 +8,7 @@ defineProps(["text", "size"]);
     :class="{
       'text-xl md:text-2xl': size === 'xl',
       'text-lg md:text-xl': size === 'lg',
+      'text-center': centered,
     }"
   >
     {{ text }}
