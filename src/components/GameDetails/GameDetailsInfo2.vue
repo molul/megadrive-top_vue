@@ -1,12 +1,18 @@
 <script setup>
 import Title from "@/components/Common/Title.vue";
 import GameDetailsBgImage from "@/components/GameDetails/GameDetailsBgImage.vue";
+import { ref } from "vue";
 
 defineProps(["data"]);
+
+const container = ref();
+
+defineExpose({ container });
 </script>
 
 <template>
   <div
+    ref="container"
     v-if="data"
     class="w-full overflow-y-scroll h-full px-2 py-4 md:px-6 md:py-4"
   >

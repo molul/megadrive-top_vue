@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import GameDetails from "@/components/GameDetails.vue";
+import GameDetails from "@/components/GameDetails/GameDetails.vue";
 import GameCard from "@/components/GameCard.vue";
 import Header from "@/components/Layout/Header.vue";
 import Footer from "@/components/Layout/Footer.vue";
@@ -45,7 +45,7 @@ function goToNextGame() {
         ? currentCardNumber.value + 1
         : 0;
     updateGameDetails(currentCardNumber.value);
-  }, 200);
+  }, 300);
 }
 
 // -------------------------------------------------------------
@@ -60,7 +60,7 @@ function goToPreviousGame() {
         ? currentCardNumber.value - 1
         : gamesData.length - 1;
     updateGameDetails(currentCardNumber.value);
-  }, 200);
+  }, 300);
 }
 
 // -------------------------------------------------------------
@@ -70,6 +70,7 @@ function updateGameDetails(number) {
   gameDetails.value.data = gamesData[number];
   gameDetails.value.showInnerContent = true;
   gameDetails.value.number = number;
+  gameDetails.value.gameDetailsInfo2.container.scrollTop = 0;
 }
 </script>
 

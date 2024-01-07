@@ -16,6 +16,7 @@ const showContent = ref(false);
 const showInnerContent = ref(false);
 const fullScreen = ref(false);
 const clickedCard = ref();
+const gameDetailsInfo2 = ref();
 
 onClickOutside(content, (event) => {
   if (fullScreen.value) {
@@ -30,7 +31,12 @@ const fullScreenRect = {
   height: "100%",
 };
 
-const emit = defineEmits(["close", "clickNext", "clickPrev"]);
+const emit = defineEmits([
+  "close",
+  "clickNext",
+  "clickPrev",
+  "gameDetailsInfo2",
+]);
 
 // -------------------------------------------------------------
 // getRect
@@ -112,7 +118,7 @@ function close() {
   }, 250);
 }
 
-defineExpose({ data, number, expand, showInnerContent });
+defineExpose({ data, number, expand, showInnerContent, gameDetailsInfo2 });
 </script>
 
 <template>
@@ -173,7 +179,7 @@ defineExpose({ data, number, expand, showInnerContent });
             />
 
             <!-- Synopsys and screenshots -->
-            <GameDetailsInfo2 :data="data" />
+            <GameDetailsInfo2 :data="data" ref="gameDetailsInfo2" />
           </div>
         </div>
       </div>
