@@ -28,9 +28,27 @@ function openGameDetails(index) {
 }
 
 // -------------------------------------------------------------
+// stopYoutubeVideo
+// -------------------------------------------------------------
+function stopYoutubeVideo() {
+  if (
+    gameDetails.value.gameDetailsInfo2.longplayIframe.iframe.getPlayerInstance()
+  ) {
+    // console.log(
+    //   gameDetails.value.gameDetailsInfo2.longplayIframe.iframe.getPlayerInstance()
+    // );
+    gameDetails.value.gameDetailsInfo2.longplayIframe.iframe.stopVideo();
+    // gameDetails.value.gameDetailsInfo2.longplayIframe.iframe
+    //   .getPlayerInstance()
+    //   .remove();
+  }
+}
+
+// -------------------------------------------------------------
 // closeGameDetails
 // -------------------------------------------------------------
 function closeGameDetails() {
+  stopYoutubeVideo();
   fullScreen.value = false;
 }
 // -------------------------------------------------------------
@@ -67,6 +85,7 @@ function goToPreviousGame() {
 // updateGameDetails
 // -------------------------------------------------------------
 function updateGameDetails(number) {
+  stopYoutubeVideo();
   gameDetails.value.data = gamesData[number];
   gameDetails.value.showInnerContent = true;
   gameDetails.value.number = number;

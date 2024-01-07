@@ -7,8 +7,9 @@ import YouTubeEmbed from "@/components/Common/YouTubeEmbed.vue";
 defineProps(["data"]);
 
 const container = ref();
+const longplayIframe = ref();
 
-defineExpose({ container });
+defineExpose({ container, longplayIframe });
 </script>
 
 <template>
@@ -48,7 +49,11 @@ defineExpose({ container });
       <div class="flex flex-col gap-2 md:gap-3">
         <Title text="Longplay" size="lg" :centered="true" />
         <div class="flex justify-center flex-wrap gap-2 md:gap-4">
-          <YouTubeEmbed :video-id="data.longplay" :title="data.name" />
+          <YouTubeEmbed
+            ref="longplayIframe"
+            :video-id="data.longplay"
+            :title="data.name"
+          />
         </div>
       </div>
     </div>
