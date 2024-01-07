@@ -10,6 +10,7 @@ export const gamesData = [
     year: 1994,
     genres: ["platform"],
     developer: "Sega",
+    longplay: "1KwJ8J4QI4c",
   },
   {
     id: "dynamite_headdy",
@@ -21,6 +22,7 @@ export const gamesData = [
     year: 1994,
     genres: ["Platform", "Action"],
     developer: "Treasure",
+    longplay: "cPdzvGn7SSw",
   },
   {
     id: "rocket_knight_adventures",
@@ -35,6 +37,7 @@ export const gamesData = [
     year: 1993,
     genres: ["Platform", "Action"],
     developer: "Konami",
+    longplay: "TlDYcXv9yM0",
   },
   {
     id: "ristar",
@@ -46,6 +49,7 @@ export const gamesData = [
     year: 1995,
     genres: ["Platform"],
     developer: "Sega",
+    longplay: "Y4wryLamXSU",
   },
   {
     id: "comix_zone",
@@ -59,6 +63,7 @@ export const gamesData = [
     year: 1995,
     genres: ["Beat'em up"],
     developer: "Sega Technical Institute",
+    longplay: "h4iFNeV4_ik",
   },
   // 6-10
   {
@@ -72,6 +77,7 @@ export const gamesData = [
     year: 1993,
     genres: ["Run and gun"],
     developer: "Treasure",
+    longplay: "deH_QOFK4Z8",
   },
   {
     id: "soleil",
@@ -84,6 +90,7 @@ export const gamesData = [
     year: 1994,
     genres: ["Action RPG"],
     developer: "Nextech",
+    longplay: "dq7fDSYeM84",
   },
   {
     id: "mega_bomberman",
@@ -95,6 +102,7 @@ export const gamesData = [
     year: 1994,
     genres: ["Action", "Puzzle"],
     developer: "Hudson Soft",
+    longplay: "4yG5N6RgctA",
   },
   {
     id: "streets_of_rage_3",
@@ -110,6 +118,7 @@ export const gamesData = [
     year: 1994,
     genres: ["Beat'em up"],
     developer: "Sega",
+    longplay: "kEkXQEGx_oQ",
   },
   {
     id: "alien_soldier",
@@ -121,6 +130,7 @@ export const gamesData = [
     year: 1995,
     genres: ["Run and gun"],
     developer: "Treasure",
+    longplay: "aJNEfPimU40",
   },
   // 11-15
   {
@@ -133,6 +143,7 @@ export const gamesData = [
     year: 1994,
     genres: ["Sports", "Arcade"],
     developer: "Midway",
+    longplay: "BiMPJnDcKLA",
   },
   {
     id: "super_street_fighter_2",
@@ -144,6 +155,7 @@ export const gamesData = [
     year: 1994,
     genres: ["Fighting"],
     developer: "Capcom",
+    longplay: "g10B28RgYCI",
   },
   {
     id: "tiny_toon_adventures_busters_hidden_treasure",
@@ -155,6 +167,7 @@ export const gamesData = [
     year: 1993,
     genres: ["Platform"],
     developer: "Konami",
+    longplay: "KSvgIQXmZEU",
   },
   {
     id: "dr_robotniks_mean_bean_machine",
@@ -167,6 +180,7 @@ export const gamesData = [
     year: 1993,
     genres: ["Puzzle"],
     developer: "Compile",
+    longplay: "a-1b3IA2ujA",
   },
   {
     id: "samurai_shodown",
@@ -178,6 +192,7 @@ export const gamesData = [
     year: 1995,
     genres: ["Figthing"],
     developer: "Takara",
+    longplay: "ybnRgfuZc0E",
   },
   // 16-20
   {
@@ -191,6 +206,7 @@ export const gamesData = [
     year: 1993,
     genres: ["Action", "Pinball"],
     developer: "Sega Technical Institute",
+    longplay: "g9VZl7IdGwA",
   },
   {
     id: "fifa_95",
@@ -203,6 +219,7 @@ export const gamesData = [
     year: 1994,
     genres: ["Sports"],
     developer: "EA Sports",
+    longplay: "3dpQDheIJiY",
   },
   {
     id: "donald_in_maui_mallard",
@@ -214,6 +231,7 @@ export const gamesData = [
     year: 1995,
     genres: ["Action", "Platform"],
     developer: "Disney Interactive",
+    longplay: "P2MiDC2oouM",
   },
   {
     id: "aladdin",
@@ -226,6 +244,7 @@ export const gamesData = [
     year: 1993,
     genres: ["Action", "Platform"],
     developer: "Virgin Games USA",
+    longplay: "uWhJOIFKtm8",
   },
   {
     id: "columns_3",
@@ -237,6 +256,7 @@ export const gamesData = [
     year: 1994,
     genres: ["Puzzle"],
     developer: "Sega",
+    longplay: "e6fZoH5-Tv4",
   },
   // // 21-25
   // {

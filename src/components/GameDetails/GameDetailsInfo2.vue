@@ -2,6 +2,7 @@
 import Title from "@/components/Common/Title.vue";
 import GameDetailsBgImage from "@/components/GameDetails/GameDetailsBgImage.vue";
 import { ref } from "vue";
+import YouTubeEmbed from "@/components/Common/YouTubeEmbed.vue";
 
 defineProps(["data"]);
 
@@ -20,7 +21,7 @@ defineExpose({ container });
     <GameDetailsBgImage :src="`/img/boxarts/${data.id}.webp`" />
 
     <!-- Content -->
-    <div class="flex flex-col gap-6 md:gap-6">
+    <div class="flex flex-col gap-6 md:gap-12">
       <!-- Description -->
       <div class="flex flex-col gap-2 md:gap-3">
         <div class="flex flex-col gap-2 text-xs md:text-sm">
@@ -40,6 +41,14 @@ defineExpose({ container });
               <img :src="`/img/screenshots/${data.id}_${index}.webp`" />
             </a>
           </div>
+        </div>
+      </div>
+
+      <!-- Longplay -->
+      <div class="flex flex-col gap-2 md:gap-3">
+        <Title text="Longplay" size="lg" :centered="true" />
+        <div class="flex justify-center flex-wrap gap-2 md:gap-4">
+          <YouTubeEmbed :video-id="data.longplay" :title="data.name" />
         </div>
       </div>
     </div>

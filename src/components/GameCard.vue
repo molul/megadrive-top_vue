@@ -12,27 +12,14 @@ const parent = ref();
 <template>
   <div ref="parent" @click="$emit('openGameDetails', number)" class="h-full">
     <div
-      class="relative cursor-pointer text-xs md:text-sm lg:text-base text-white rounded-lg shadow-md flex items-start flex-col h-full gap-0 transition-opacity duration-300 overflow-hidden min-h-[300px] border-4 border-gray-300"
+      class="relative cursor-pointer text-xs md:text-sm lg:text-base text-white rounded-lg shadow-md flex items-start flex-col h-full gap-0 transition-all duration-300 overflow-hidden border-4 border-transparent hover:border-cyan-400"
     >
       <!-- Number -->
       <Number :number="number" />
 
       <!-- Boxart -->
       <div class="w-full">
-        <img
-          class="object-none object-[65%_40%] w-full h-72"
-          :class="{
-            'object-[45%_40%]': data.year >= 1994,
-            'object-[50%_40%]': data.year < 1994 || data.name === 'FIFA 95',
-          }"
-          :src="`/img/boxarts/${data.id}.webp`"
-        />
-      </div>
-      <!-- Name -->
-      <div
-        class="gridBg size-full flex justify-center items-center text-lg lg:text-xl p-4 text-center"
-      >
-        {{ data.name }}
+        <img class="w-full" :src="`/img/boxarts/${data.id}.webp`" />
       </div>
     </div>
   </div>

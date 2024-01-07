@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div class="text-white text-center gridBg p-4 flex flex-col">
+  <div class="bg-black/80 text-white text-center p-4 flex flex-col">
     <div>
       Developed by
       <a
