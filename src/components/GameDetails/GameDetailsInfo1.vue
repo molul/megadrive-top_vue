@@ -49,7 +49,7 @@ const emit = defineEmits(["clickNext", "clickPrev"]);
         </tr>
 
         <tr>
-          <td class="border font-bold align-top p-1">Release date</td>
+          <td class="border font-bold align-top p-1">Year</td>
           <td class="border w-1/2 font-bold align-top p-1">
             {{ data.year || "" }}
           </td>
