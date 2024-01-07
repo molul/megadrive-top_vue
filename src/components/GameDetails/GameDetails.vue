@@ -90,6 +90,7 @@ function expand(card) {
 
     // Show inner content
     setTimeout(() => {
+      console.log((gameDetailsInfo2.value.container.scrollTop = 0));
       showInnerContent.value = true;
     }, 450);
   }, 150);
