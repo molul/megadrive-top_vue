@@ -18,15 +18,12 @@ const emit = defineEmits(["clickNext", "clickPrev"]);
       >
         <!-- Image -->
         <div class="w-full">
-            <a
-              :href="`/img/boxarts/${data.id}.webp`"
-              target="_blank"
-            >
-          <img
-            :src="`/img/boxarts/${data.id}.webp`"
-            class="lg:w-full object-contain h-full max-h-[250px] md:max-h-[450px] lg:h-auto lg:max-h-none mx-auto"
-          />
-</a>
+          <a :href="`/img/boxarts/${data.id}.webp`" target="_blank">
+            <img
+              :src="`/img/boxarts/${data.id}.webp`"
+              class="lg:w-full object-contain h-full max-h-[250px] md:max-h-[450px] lg:h-auto lg:max-h-none mx-auto"
+            />
+          </a>
         </div>
 
         <!-- Navigation buttons from tablet -->
